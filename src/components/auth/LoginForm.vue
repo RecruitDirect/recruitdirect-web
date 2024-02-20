@@ -2,6 +2,19 @@
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { Form } from 'vee-validate';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import config from "../../config";
+import {
+  connectAuthEmulator,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  sendEmailVerification,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
 
 /*Social icons*/
 import google from '@/assets/images/svgs/google-icon.svg';
@@ -18,9 +31,18 @@ const passwordRules = ref([
 ]);
 const emailRules = ref([(v: string) => !!v || 'E-mail is required', (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid']);
 
+// Initialize Firebase
+const app = initializeApp(config.firebaseConfig);
+const analytics = getAnalytics(app);
+
+
 function validate(values: any, { setErrors }: any) {
     const authStore = useAuthStore();
     return authStore.login(username.value, password.value).catch((error) => setErrors({ apiError: error }));
+}
+
+function signinUser() {
+    
 }
 </script>
 
@@ -72,7 +94,7 @@ function validate(values: any, { setErrors }: any) {
                 >
             </div>
         </div>
-        <v-btn size="large" :loading="isSubmitting" color="primary" :disabled="valid" block type="submit" flat>Sign In</v-btn>
+        <v-btn size="large" :loading="isSubmitting" color="primary" :disabled="valid" block type="submit" flat @click="signinUser">Sign In</v-btn>
         <div v-if="errors.apiError" class="mt-2">
             <v-alert color="error">{{ errors.apiError }}</v-alert>
         </div>
