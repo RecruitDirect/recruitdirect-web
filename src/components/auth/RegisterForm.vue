@@ -4,6 +4,9 @@ import Logo from '@/layouts/full/logo/Logo.vue';
 /*Social icons*/
 import google from '@/assets/images/svgs/google-icon.svg';
 import facebook from '@/assets/images/svgs/facebook-icon.svg';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import { router } from '@/router';
 
 const checkbox = ref(false);
 const valid = ref(true);
@@ -20,21 +23,48 @@ const fnameRules = ref([
     (v: string) => !!v || 'Name is required',
     (v: string) => (v && v.length <= 10) || 'Name must be less than 10 characters'
 ]);
+
+function signUpUserWithGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            /** @type {firebase.auth.OAuthCredential} */
+            var credential = result.credential;
+
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // IdP data available in result.additionalUserInfo.profile.
+            router.push("/");
+        }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        });
+}
 </script>
 <template>
     <v-row class="d-flex mb-6">
-        <v-col cols="6" sm="6"  class="pr-2">
-            <v-btn variant="outlined" size="large" class="border text-subtitle-1" block>
-                <img :src="google" height="20" class="mr-2" alt="google" />
+        <v-col cols="12" sm="12"  class="pr-2">
+            <v-btn variant="elevated" size="large" class="border text-subtitle-1" block @click="signUpUserWithGoogle">
+                <img :src="google" height="16" class="mr-2" alt="google" />
                 <span class="d-sm-flex d-none mr-1">Sign up with</span>Google
             </v-btn>
         </v-col>
-        <v-col cols="6" sm="6" class="pl-2">
+        <!-- <v-col cols="6" sm="6" class="pl-2">
             <v-btn variant="outlined" size="large" class="border text-subtitle-1" block>
                 <img :src="facebook" width="25" height="30" class="mr-1" alt="facebook" />
                 <span class="d-sm-flex d-none mr-1">Sign up with</span>FB
             </v-btn>
-        </v-col>
+        </v-col> -->
     </v-row>
     <div class="d-flex align-center text-center mb-6">
         <div class="text-h6 w-100 px-5 font-weight-regular auth-divider position-relative">

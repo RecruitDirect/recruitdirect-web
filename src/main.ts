@@ -25,6 +25,10 @@ import { createI18n } from 'vue-i18n';
 import messages from '@/utils/locales/messages';
 //ScrollTop
 import VueScrollTo from 'vue-scrollto';
+
+import firebase from "firebase/compat/app";
+import config from "./config";
+
 const i18n = createI18n({
     locale: 'en',
     messages: messages,
@@ -55,3 +59,5 @@ app.use(VueScrollTo, {
     duration: 1000,
     easing: "ease"
 })
+
+firebase.initializeApp(config.firebaseConfig);

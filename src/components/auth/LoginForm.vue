@@ -2,19 +2,9 @@
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { Form } from 'vee-validate';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import firebase from "firebase/compat/app";
 import config from "../../config";
-import {
-  connectAuthEmulator,
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  signOut,
-} from 'firebase/auth';
+import "firebase/compat/auth";
 
 /*Social icons*/
 import google from '@/assets/images/svgs/google-icon.svg';
@@ -31,25 +21,45 @@ const passwordRules = ref([
 ]);
 const emailRules = ref([(v: string) => !!v || 'E-mail is required', (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid']);
 
-// Initialize Firebase
-const app = initializeApp(config.firebaseConfig);
-const analytics = getAnalytics(app);
-
-
 function validate(values: any, { setErrors }: any) {
     const authStore = useAuthStore();
     return authStore.login(username.value, password.value).catch((error) => setErrors({ apiError: error }));
 }
 
-function signinUser() {
-    
+function signInUserWithGoogle() {
+    firebase.initializeApp(config.firebaseConfig);
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            /** @type {firebase.auth.OAuthCredential} */
+            var credential = result.credential;
+
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // IdP data available in result.additionalUserInfo.profile.
+            router.push("/");
+        }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        });
 }
 </script>
 
 <template>
     <v-row class="d-flex mb-3 pb-lg-6 pb-4">
         <v-col cols="12" sm="12" class="pr-2">
-            <v-btn variant="elevated" size="large" class="border text-subtitle-1" block>
+            <v-btn variant="elevated" size="large" class="border text-subtitle-1" block @click="signInUserWithGoogle">
                 <img :src="google" height="16" class="mr-2" alt="google" />
                 <span class="d-sm-flex d-none mr-1">Sign in with</span>Google
             </v-btn>
