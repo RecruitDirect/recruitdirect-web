@@ -7,10 +7,10 @@ import NavGroup from './NavGroup/index.vue';
 import NavItem from './NavItem/index.vue';
 import NavCollapse from './NavCollapse/NavCollapse.vue';
 import Logo from '../logo/Logo.vue';
-import { useAuthStore } from '@/stores/auth';
+import { userAuthStore } from '@/stores/auth';
 const customizer = useCustomizerStore();
 const sidebarMenu = shallowRef(sidebarItems);
-const authStore = useAuthStore();
+const authStore = userAuthStore();
 </script>
 
 <template>

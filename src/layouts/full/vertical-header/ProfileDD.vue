@@ -2,9 +2,9 @@
 import { MailIcon } from 'vue-tabler-icons';
 import { profileDD } from '@/_mockApis/headerData';
 
-import { useAuthStore } from '@/stores/auth';
+import { userAuthStore } from '@/stores/auth';
 
-const authStore = useAuthStore();
+const authStore = userAuthStore();
 </script>
 
 <template>

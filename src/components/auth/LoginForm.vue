@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useAuthStore } from '@/stores/auth';
+import { userAuthStore } from '@/stores/auth';
 import { Form } from 'vee-validate';
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
 
 /*Social icons*/
 import google from '@/assets/images/svgs/google-icon.svg';
@@ -21,36 +19,13 @@ const passwordRules = ref([
 const emailRules = ref([(v: string) => !!v || 'E-mail is required', (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid']);
 
 function validate(values: any, { setErrors }: any) {
-    const authStore = useAuthStore();
+    const authStore = userAuthStore();
     return authStore.login(email.value, password.value).catch((error) => setErrors({ apiError: error }));
 }
 
 function signInUserWithGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase.auth()
-        .signInWithPopup(provider)
-        .then((result) => {
-            /** @type {firebase.auth.OAuthCredential} */
-            var credential = result.credential;
-
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
-            // IdP data available in result.additionalUserInfo.profile.
-            router.push("/");
-        }).catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-        }
-    );
+    const authStore = userAuthStore();
+    return authStore.signInGoogle().catch((error) => console.log(error));
 }
 </script>
 
@@ -93,9 +68,9 @@ function signInUserWithGoogle() {
             class="pwdInput"
         ></VTextField>
         <div class="d-flex flex-wrap align-center my-3 ml-n2">
-            <v-checkbox v-model="checkbox" :rules="[(v:any) => !!v || 'You must agree to continue!']" required hide-details color="primary">
+            <checkbox v-model="checkbox" :rules="[(v:any) => !!v || 'You must agree to continue!']" required hide-details color="primary">
                 <template v-slot:label class="">Remeber this Device</template>
-            </v-checkbox>
+            </checkbox>
             <div class="ml-sm-auto">
                 <RouterLink to="" class="text-primary text-decoration-none text-body-1 opacity-1 font-weight-medium"
                     >Forgot Password ?</RouterLink

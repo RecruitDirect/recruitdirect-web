@@ -4,10 +4,7 @@ import Logo from '@/layouts/full/logo/Logo.vue';
 /*Social icons*/
 import google from '@/assets/images/svgs/google-icon.svg';
 import facebook from '@/assets/images/svgs/facebook-icon.svg';
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-import { router } from '@/router';
-import { useAuthStore } from '@/stores/auth';
+import { userAuthStore } from '@/stores/auth';
 
 const checkbox = ref(false);
 const valid = ref(true);
@@ -26,36 +23,13 @@ const fnameRules = ref([
 ]);
 
 function signUpWithPassword() {
-    const authStore = useAuthStore();
+    const authStore = userAuthStore();
     return authStore.signUp(fname.value, email.value, password.value).catch((error) => console.log(error));
 }
 
 function signUpUserWithGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase.auth()
-        .signInWithPopup(provider)
-        .then((result) => {
-            /** @type {firebase.auth.OAuthCredential} */
-            var credential = result.credential;
-
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
-            // IdP data available in result.additionalUserInfo.profile.
-            router.push("/");
-        }).catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-        }
-    );
+    const authStore = userAuthStore();
+    return authStore.signInGoogle().catch((error) => console.log(error));
 }
 </script>
 <template>
