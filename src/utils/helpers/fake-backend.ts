@@ -16,6 +16,8 @@ function fakeBackend() {
                         return getUsers();
                     default:
                         // pass through any requests not handled above
+                        console.log(url);
+                        console.log(opts);
                         return realFetch(url, opts)
                             .then((response) => resolve(response))
                             .catch((error) => reject(error));

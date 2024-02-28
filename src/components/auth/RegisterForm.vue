@@ -7,6 +7,7 @@ import facebook from '@/assets/images/svgs/facebook-icon.svg';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { router } from '@/router';
+import { useAuthStore } from '@/stores/auth';
 
 const checkbox = ref(false);
 const valid = ref(true);
@@ -23,6 +24,11 @@ const fnameRules = ref([
     (v: string) => !!v || 'Name is required',
     (v: string) => (v && v.length <= 10) || 'Name must be less than 10 characters'
 ]);
+
+function signUpWithPassword() {
+    const authStore = useAuthStore();
+    return authStore.signUp(fname.value, email.value, password.value).catch((error) => console.log(error));
+}
 
 function signUpUserWithGoogle() {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -48,7 +54,8 @@ function signUpUserWithGoogle() {
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         // ...
-        });
+        }
+    );
 }
 </script>
 <template>
@@ -86,6 +93,6 @@ function signUpUserWithGoogle() {
             type="password"
             color="primary"
         ></VTextField>
-        <v-btn size="large" class="mt-2" color="primary" block submit flat>Sign Up</v-btn>
+        <v-btn size="large" class="mt-2" color="primary" block submit flat @click="signUpWithPassword">Sign Up</v-btn>
     </v-form>
 </template>
