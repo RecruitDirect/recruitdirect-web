@@ -6,10 +6,10 @@ import HorizontalHeader from './horizontal-header/HorizontalHeader.vue';
 import HorizontalSidebar from './horizontal-sidebar/HorizontalSidebar.vue';
 import Customizer from './customizer/Customizer.vue';
 import { useCustomizerStore } from '../../stores/customizer';
-import { useUsersStore } from '@/stores/authUser';
+import { useRecruiterStore } from '@/stores/authUser';
 import { pl, zhHans } from 'vuetify/locale'
 const customizer = useCustomizerStore();
-const usersStore = useUsersStore().loadUser();
+const usersStore = useRecruiterStore().loadUser();
 
 </script>
 

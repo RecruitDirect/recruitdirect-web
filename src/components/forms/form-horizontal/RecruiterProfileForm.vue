@@ -3,10 +3,14 @@ import { ref } from 'vue';
 const show2 = ref(true);
 
 /*Location Select*/
-const select = ref('');
-const location = ref(['India', 'United Kingdom', 'Srilanka']);
-const props = defineProps(['userData'])
+const companySelect = ref('');
+const typeSelect = ref('');
+const industriesSelects = ref([]);
+const props = defineProps(['userData', 'companies', 'recruiterType', 'industries']);
 const userInfo = ref(props.userData);
+const companies = ref(props.companies);
+const industries = ref(props.industries);
+const recruiterType = ref(props.recruiterType);
 </script>
 <template>
     <v-card elevation="10" >
@@ -71,14 +75,14 @@ const userInfo = ref(props.userData);
                 </v-row>
                 <v-row class="align-center mb-3">
                     <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
-                        <v-label class=" font-weight-medium">Country</v-label>
+                        <v-label class=" font-weight-medium">Company</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
                         <v-select
-                            v-model="select"
-                            :items="location"
-                            item-title="state"
-                            item-value="abbr"
+                            v-model="companySelect"
+                            :items="companies"
+                            item-title="name"
+                            item-value="id"
                             label="Select"
                             return-object
                             single-line
@@ -89,10 +93,28 @@ const userInfo = ref(props.userData);
                 </v-row>
                 <v-row class="align-center mb-3">
                     <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
-                        <v-label class=" font-weight-medium">Birth Date</v-label>
+                        <v-label class=" font-weight-medium">Recruiter type</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
-                        <v-text-field color="primary" variant="outlined" type="date" hide-details></v-text-field>
+                        <v-select
+                            v-model="typeSelect"
+                            :items="recruiterType"
+                            item-title="[1]"
+                            item-value="[0]"
+                            label="Select"
+                            single-line
+                            variant="outlined"
+                            hide-details
+                        ></v-select>
+                    </v-col>
+                </v-row>
+                <v-row class="align-center mb-3">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                        <v-label class=" font-weight-medium">Url</v-label>
+                    </v-col>
+                    <v-col cols="12" sm="9">
+                        <v-text-field color="primary" variant="outlined" type="text" placeholder="linkedin.com/yoururl" hide-details>
+                        </v-text-field>
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">
@@ -102,6 +124,33 @@ const userInfo = ref(props.userData);
                     <v-col cols="12" sm="9">
                         <v-text-field color="primary" variant="outlined" type="text" placeholder="123 4567 207" hide-details>
                         </v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row class="align-center mb-3">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                        <v-label class=" font-weight-medium">Work years</v-label>
+                    </v-col>
+                    <v-col cols="12" sm="9">
+                        <v-text-field color="primary" variant="outlined" type="number" placeholder="1" hide-details>
+                        </v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row class="align-center mb-3">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                        <v-label class=" font-weight-medium">Industries</v-label>
+                    </v-col>
+                    <v-col cols="12" sm="9">
+                        <v-select
+                            v-model="industriesSelects"
+                            :items="industries"
+                            item-title="[0]"
+                            item-value="[0]"
+                            label="Select"
+                            single-line
+                            variant="outlined"
+                            hide-details
+                            multiple
+                        ></v-select>
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">

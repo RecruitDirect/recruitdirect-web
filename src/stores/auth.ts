@@ -33,6 +33,7 @@ export const userAuthStore = defineStore({
                             .then((res => {
                                 this.user.id = res.data.id;
                                 localStorage.setItem('user', JSON.stringify(this.user));
+                                localStorage.setItem('userData', JSON.stringify(res.data));
                                 // redirect to previous url or default to home page
                                 router.push(this.returnUrl || '/dashboards/modern');
                             }))
@@ -69,6 +70,7 @@ export const userAuthStore = defineStore({
                         .then((res => {
                             this.user.id = res.data.id;
                             localStorage.setItem('user', JSON.stringify(this.user));
+                            localStorage.setItem('userData', JSON.stringify(res.data));
                             // redirect to previous url or default to home page
                             router.push(this.returnUrl || '/dashboards/modern');
                         }))
