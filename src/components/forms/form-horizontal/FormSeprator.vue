@@ -5,6 +5,7 @@ const show2 = ref(true);
 /*Location Select*/
 const select = ref('');
 const location = ref(['India', 'United Kingdom', 'Srilanka']);
+const props = defineProps(['userData'])
 </script>
 <template>
     <v-card elevation="10" >
@@ -38,6 +39,7 @@ const location = ref(['India', 'United Kingdom', 'Srilanka']);
                             placeholder="john.deo"
                             suffix="@example.com"
                             hide-details
+                            disabled
                         />
                     </v-col>
                 </v-row>

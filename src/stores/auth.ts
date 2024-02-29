@@ -4,7 +4,6 @@ import { fetchWrapper } from '@/utils/helpers/fetch-wrapper';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import axios from 'axios';
-
 const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
 
 export const userAuthStore = defineStore({
@@ -23,6 +22,7 @@ export const userAuthStore = defineStore({
                 .signInWithPopup(provider)
                 .then((result) => {
                     /** @type {firebase.auth.OAuthCredential} */
+                    console.log(result);
                     var credential = result.credential;
                     // The signed-in user info.
                     this.user = result.user;
@@ -59,16 +59,22 @@ export const userAuthStore = defineStore({
             );
         },
         async signUp(username: string, email: string, password: string) {
-            firebase.auth().createUserWithEmailAndPassword(email, password)
+            await firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     // Signed in 
                     this.user = userCredential.user;
                     // ...
                     console.log(userCredential);
-                    // store user details and jwt in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('user', JSON.stringify(this.user));
-                    // redirect to previous url or default to home page
-                    router.push(this.returnUrl || '/dashboards/modern');
+                    axios.post('http://localhost:5001/recruiter/add?name='+ this.user.displayName + '&email=' + this.user.email)
+                        .then((res => {
+                            this.user.id = res.data.id;
+                            localStorage.setItem('user', JSON.stringify(this.user));
+                            // redirect to previous url or default to home page
+                            router.push(this.returnUrl || '/dashboards/modern');
+                        }))
+                        .catch((error) => {
+                            console.log(error);
+                        });
                 })
                 .catch((error) => {
                     var errorCode = error.code;
@@ -77,14 +83,15 @@ export const userAuthStore = defineStore({
                 });
         },
         async login(email: string, password: string) {
-            firebase.auth().signInWithEmailAndPassword(email, password)
+            await firebase.auth().signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     // Signed in 
                     this.user = userCredential.user;
                     // ...
                     console.log(userCredential);
-                    // store user details and jwt in local storage to keep user logged in between page refreshes
+                    
                     localStorage.setItem('user', JSON.stringify(this.user));
+
                     // redirect to previous url or default to home page
                     router.push(this.returnUrl || '/dashboards/modern');
                 })
