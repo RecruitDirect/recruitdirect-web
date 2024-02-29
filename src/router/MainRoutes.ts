@@ -87,6 +87,11 @@ const MainRoutes = {
             component: () => import('@/views/apps/user-profile/Profile.vue')
         },
         {
+            name: 'RecruiterProfile',
+            path: '/apps/recruiter/profile',
+            component: () => import('@/views/apps/user-profile/RecruiterProfile.vue')
+        },
+        {
             name: 'UserFollowers',
             path: '/apps/user/profile/followers',
             component: () => import('@/views/apps/user-profile/Followers.vue')

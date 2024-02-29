@@ -6,7 +6,6 @@ import sidebarItems from './sidebarItem';
 import NavGroup from './NavGroup/index.vue';
 import NavItem from './NavItem/index.vue';
 import NavCollapse from './NavCollapse/NavCollapse.vue';
-import Logo from '../logo/Logo.vue';
 import { userAuthStore } from '@/stores/auth';
 const customizer = useCustomizerStore();
 const sidebarMenu = shallowRef(sidebarItems);
@@ -28,7 +27,7 @@ const authStore = userAuthStore();
                     </v-avatar>
                 </div>
                 <div class="profile-name d-flex align-center px-3">
-                    <h5 class="text-white font-weight-medium">Julia Roberts</h5>
+                    <h5 class="text-white font-weight-medium">{{ authStore.$state.user.displayName }}</h5>
                     <div class="ml-auto profile-logout">
                         <v-btn variant="text" icon rounded="md" color="white" @click="authStore.logout()">
                             <PowerIcon size="22"/>

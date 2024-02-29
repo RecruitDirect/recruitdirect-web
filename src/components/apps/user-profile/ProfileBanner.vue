@@ -11,7 +11,12 @@ const items = shallowRef([
     { tab: 'Friends', icon: UsersIcon, href: '/apps/user/profile/friends' },
     { tab: 'Gallery', icon: PhotoIcon, href: '/apps/user/profile/gallery' }
 ]);
-
+const props = defineProps({
+    name: String,
+    role: String,
+    email: String,
+    photoUrl: String,
+})
 
 </script>
 

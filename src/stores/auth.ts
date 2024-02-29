@@ -3,6 +3,7 @@ import { router } from '@/router';
 import { fetchWrapper } from '@/utils/helpers/fetch-wrapper';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import axios from 'axios';
 
 const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
 
@@ -23,16 +24,28 @@ export const userAuthStore = defineStore({
                 .then((result) => {
                     /** @type {firebase.auth.OAuthCredential} */
                     var credential = result.credential;
-        
-                    // This gives you a Google Access Token. You can use it to access the Google API.
-                    var token = credential.accessToken;
                     // The signed-in user info.
                     this.user = result.user;
                     // IdP data available in result.additionalUserInfo.profile.
 
-                    localStorage.setItem('user', JSON.stringify(this.user));
-                    // redirect to previous url or default to home page
-                    router.push(this.returnUrl || '/dashboards/modern');
+                    if (result.additionalUserInfo?.isNewUser === true) {
+                        axios.post('http://localhost:5001/recruiter/add?name='+ this.user.displayName + '&email=' + this.user.email)
+                            .then((res => {
+                                this.user.id = res.data.id;
+                                localStorage.setItem('user', JSON.stringify(this.user));
+                                // redirect to previous url or default to home page
+                                router.push(this.returnUrl || '/dashboards/modern');
+                            }))
+                            .catch((error) => {
+                                console.log(error);
+                            });
+                    }
+                    else {
+                        localStorage.setItem('user', JSON.stringify(this.user));
+                        // redirect to previous url or default to home page
+                        router.push(this.returnUrl || '/dashboards/modern');
+                    }
+                    
                 }).catch((error) => {
                 // Handle Errors here.
                 var errorCode = error.code;
