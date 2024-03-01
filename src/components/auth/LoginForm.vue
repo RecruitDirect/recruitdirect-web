@@ -68,7 +68,7 @@ function signInUserWithGoogle() {
             class="pwdInput"
         ></VTextField>
         <div class="d-flex flex-wrap align-center my-3 ml-n2">
-            <checkbox v-model="checkbox" :rules="[(v:any) => !!v || 'You must agree to continue!']" required hide-details color="primary">
+            <checkbox v-model="checkbox" :rules="[(v:any) => !!v || 'You must agree to continue!']" required color="primary" hide-details>
                 <template v-slot:label class="">Remeber this Device</template>
             </checkbox>
             <div class="ml-sm-auto">

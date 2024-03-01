@@ -48,7 +48,7 @@ const lang = ref(['English', 'French']);
                             variant="outlined"
                             type="email"
                             placeholder="john.deo"
-                            suffix="@example.com"
+                            suffix="@example.com" 
                             hide-details
                         />
                     </div>

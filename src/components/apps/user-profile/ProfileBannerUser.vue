@@ -6,18 +6,14 @@ import UserImage from '@/assets/images/profile/user-1.jpg';
 
 const tab = ref(null);
 const items = shallowRef([
-    { tab: 'Profile', icon: UserCircleIcon, href: '/apps/user/profile' },
-    { tab: 'Followers', icon: HeartIcon, href: '/apps/user/profile/followers' },
-    { tab: 'Friends', icon: UsersIcon, href: '/apps/user/profile/friends' },
-    { tab: 'Gallery', icon: PhotoIcon, href: '/apps/user/profile/gallery' }
+    { tab: 'Profile', icon: UserCircleIcon, href: '/apps/recruiter/profile' }
 ]);
-
-
+const props = defineProps(['userData', 'recruiterType'])
 </script>
 
 <template>
     <v-card elevation="10" class="overflow-hidden" >
-        <img :src="profileBg" alt="profile" class="w-100" />
+        <img :src="profileBg" alt="profile" class="w-100" style="max-height: 200px;"/>
         <div>
             <v-row class="mt-1">
                 <v-col cols="12" lg="4" sm="12" class="order-sm-second">
@@ -48,24 +44,12 @@ const items = shallowRef([
                                 <img :src="UserImage" width="100" alt="Mathew" />
                             </v-avatar>
                         </div>
-                        <h5 class="text-h5 mt-3">Mathew Anderson</h5>
-                        <span class="text-h6 font-weight-regular">Designer</span>
+                        <h5 class="text-h5 mt-3">{{ props.userData.name }}</h5>
+                        <span class="text-h6 font-weight-regular">{{ props.recruiterType.get(props.userData.type) }}</span>
                     </div>
                 </v-col>
                 <v-col cols="12" lg="4" class="d-flex align-center justify-center justify-lg-end order-sm-third">
                     <div class="d-flex align-center justify-space-between px-10 py-1 gap-3">
-                        <v-btn icon variant="flat" size="x-small" color="primary" class="btn-brand-facebook"
-                            ><BrandFacebookIcon size="16"
-                        /></v-btn>
-                        <v-btn icon variant="flat" size="x-small" color="primary" class="btn-brand-twitter"
-                            ><BrandTwitterIcon size="16"
-                        /></v-btn>
-                        <v-btn icon variant="flat" size="x-small" color="primary" class="btn-brand-dribbble"
-                            ><BrandDribbbleIcon size="16"
-                        /></v-btn>
-                        <v-btn icon variant="flat" size="x-small" color="primary" class="btn-brand-youtube"
-                            ><BrandYoutubeIcon size="16"
-                        /></v-btn>
                         <v-btn variant="flat" color="primary">Add to Story</v-btn>
                     </div>
                 </v-col>

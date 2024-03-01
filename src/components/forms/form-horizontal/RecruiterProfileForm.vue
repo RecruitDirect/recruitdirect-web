@@ -2,15 +2,12 @@
 import { ref } from 'vue';
 const show2 = ref(true);
 
-/*Location Select*/
-const companySelect = ref('');
-const typeSelect = ref('');
-const industriesSelects = ref([]);
 const props = defineProps(['userData', 'companies', 'recruiterType', 'industries']);
 const userInfo = ref(props.userData);
 const companies = ref(props.companies);
 const industries = ref(props.industries);
 const recruiterType = ref(props.recruiterType);
+const industriesSelects = ref([]);
 </script>
 <template>
     <v-card elevation="10" >
@@ -79,7 +76,7 @@ const recruiterType = ref(props.recruiterType);
                     </v-col>
                     <v-col cols="12" sm="9">
                         <v-select
-                            v-model="companySelect"
+                            v-model="userInfo.company"
                             :items="companies"
                             item-title="name"
                             item-value="id"
@@ -97,7 +94,7 @@ const recruiterType = ref(props.recruiterType);
                     </v-col>
                     <v-col cols="12" sm="9">
                         <v-select
-                            v-model="typeSelect"
+                            v-model="userInfo.type"
                             :items="recruiterType"
                             item-title="[1]"
                             item-value="[0]"
@@ -113,7 +110,7 @@ const recruiterType = ref(props.recruiterType);
                         <v-label class=" font-weight-medium">Url</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
-                        <v-text-field color="primary" variant="outlined" type="text" placeholder="linkedin.com/yoururl" hide-details>
+                        <v-text-field color="primary" variant="outlined" type="text" placeholder="linkedin.com/yoururl" v-model="userInfo.url" hide-details>
                         </v-text-field>
                     </v-col>
                 </v-row>
@@ -122,7 +119,7 @@ const recruiterType = ref(props.recruiterType);
                         <v-label class=" font-weight-medium">Phone No</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
-                        <v-text-field color="primary" variant="outlined" type="text" placeholder="123 4567 207" hide-details>
+                        <v-text-field color="primary" variant="outlined" type="text" placeholder="123 4567 207" v-model="userInfo.phoneNum" hide-details>
                         </v-text-field>
                     </v-col>
                 </v-row>
@@ -131,7 +128,7 @@ const recruiterType = ref(props.recruiterType);
                         <v-label class=" font-weight-medium">Work years</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
-                        <v-text-field color="primary" variant="outlined" type="number" placeholder="1" hide-details>
+                        <v-text-field color="primary" variant="outlined" type="number" placeholder="1" v-model="userInfo.workYears" hide-details>
                         </v-text-field>
                     </v-col>
                 </v-row>
@@ -141,7 +138,7 @@ const recruiterType = ref(props.recruiterType);
                     </v-col>
                     <v-col cols="12" sm="9">
                         <v-select
-                            v-model="industriesSelects"
+                            v-model="userInfo.industries"
                             :items="industries"
                             item-title="[0]"
                             item-value="[0]"
@@ -155,7 +152,7 @@ const recruiterType = ref(props.recruiterType);
                 </v-row>
                 <v-row class="align-center mb-3">
                     <v-col cols="12" sm="9" offset-sm="3">
-                        <v-btn color="primary" flat>Submit</v-btn>
+                        <v-btn color="primary" flat>Save</v-btn>
                         <v-btn class="bg-lighterror text-error ml-4" flat>Cancel</v-btn>
                     </v-col>
                 </v-row>

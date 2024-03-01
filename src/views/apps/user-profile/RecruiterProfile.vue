@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { useRecruiterStore } from '@/stores/authUser';
 
 // components
-import ProfileBanner from '@/components/apps/user-profile/ProfileBanner.vue';
+import ProfileBannerUser from '@/components/apps/user-profile/ProfileBannerUser.vue';
 import IntroCard from '@/components/apps/user-profile/IntroCard.vue';
 import RecruiterProfileForm from '@/components/forms/form-horizontal/RecruiterProfileForm.vue';
 import { useCompaniesStore } from '@/stores/companies';
@@ -28,7 +28,7 @@ if (companiesStore.companies == null || companiesStore.companies == undefined ||
 </script>
 
 <template v-if="isCompanyLoading.value && isUserLoading.value">
-    <ProfileBanner :userData="usersStore.userData"/>
+    <ProfileBannerUser :userData="usersStore.userData" :recruiterType="usersStore.recruiterType"/>
     <v-row class="mt-4">
         <v-col cols="12" lg="4" md="4">
             <IntroCard />

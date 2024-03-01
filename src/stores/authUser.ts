@@ -38,7 +38,8 @@ export const useRecruiterStore = defineStore({
                     location: "Seattle"
                 },
                 active: true,
-                industries: "internet, retail, AI"
+                industries: ['Internet', 'Retail'],
+                phoneNum: '2343456789'
             };
             localStorage.setItem('userData', JSON.stringify(this.userData));
             return Promise.resolve(this.userData);
