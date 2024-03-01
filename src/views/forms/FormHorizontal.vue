@@ -47,9 +47,9 @@ const breadcrumbs = ref([
                 <BasicWithIcons/>
             </UiParentCard>           
         </v-col>
-        <v-col cols="12" md="6">
+        <!-- <v-col cols="12" md="6">
             <FormSeprator/>        
-        </v-col>
+        </v-col> -->
         <v-col cols="12" md="6">
             <FormLabelAlign/>        
         </v-col>

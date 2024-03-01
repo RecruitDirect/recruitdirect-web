@@ -16,28 +16,23 @@ const props = defineProps(['userData', 'recruiterType'])
         <img :src="profileBg" alt="profile" class="w-100" style="max-height: 200px;"/>
         <div>
             <v-row class="mt-1">
-                <v-col cols="12" lg="4" sm="12" class="order-sm-second">
+                <v-col cols="12" lg="5" sm="12" class="order-sm-second">
                     <div class="px-4 py-1">
                         <v-row class="justify-center">
                             <v-col cols="4" class="text-center">
                                 <FileDescriptionIcon size="20" />
                                 <h4 class="text-h4">938</h4>
-                                <h6 class="text-h6 font-weight-regular">Posts</h6>
+                                <div class="text-subtitle-2 font-weight-regular">Succeed cases</div>
                             </v-col>
-                            <v-col cols="4" class="text-center">
-                                <UserCircleIcon size="20" />
-                                <h4 class="text-h4">3,586</h4>
-                                <h6 class="text-h6 font-weight-regular">Followers</h6>
-                            </v-col>
-                            <v-col cols="4" class="text-center">
+                            <v-col cols="6" class="text-center">
                                 <UserCheckIcon size="20" />
                                 <h4 class="text-h4">2,659</h4>
-                                <h6 class="text-h6 font-weight-regular">Following</h6>
+                                <div class="text-body-2 font-weight-regular">Avg Candidates / role</div>
                             </v-col>
                         </v-row>
                     </div>
                 </v-col>
-                <v-col cols="12" lg="4" sm="12" class="d-flex justify-center order-sml-first">
+                <v-col cols="12" lg="2" sm="12" class="d-flex justify-center order-sml-first">
                     <div class="text-center top-spacer">
                         <div class="avatar-border">
                             <v-avatar size="100" class="userImage">
@@ -47,11 +42,20 @@ const props = defineProps(['userData', 'recruiterType'])
                         <h5 class="text-h5 mt-3">{{ props.userData.name }}</h5>
                         <span class="text-h6 font-weight-regular">{{ props.recruiterType.get(props.userData.type) }}</span>
                     </div>
-                </v-col>
-                <v-col cols="12" lg="4" class="d-flex align-center justify-center justify-lg-end order-sm-third">
+                </v-col>    
+                <v-col cols="12" lg="5" sm="12" class="order-sm-second">
                     <div class="d-flex align-center justify-space-between px-10 py-1 gap-3">
-                        <v-btn variant="flat" color="primary">Add to Story</v-btn>
+                        <v-row class="">
+                            <v-col cols="5" class="text-center">
+                                <UserCircleIcon size="20" />
+                                <h4 class="text-h4">3,586</h4>
+                                <div class="text-subtitle-2 font-weight-regular">Bonus earned</div>
+                            </v-col>
+                        </v-row>
                     </div>
+                    <!-- <div class="d-flex align-center justify-space-between px-10 py-1 gap-3">
+                        <v-btn variant="flat" color="primary">Add to Story</v-btn>
+                    </div> -->
                 </v-col>
                 <v-col md="12" class="order-sm-last">
                     <v-tabs v-model="tab" color="primary" dark class="profiletab bg-grey100">

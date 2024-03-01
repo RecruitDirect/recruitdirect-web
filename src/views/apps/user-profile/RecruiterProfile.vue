@@ -30,10 +30,7 @@ if (companiesStore.companies == null || companiesStore.companies == undefined ||
 <template v-if="isCompanyLoading.value && isUserLoading.value">
     <ProfileBannerUser :userData="usersStore.userData" :recruiterType="usersStore.recruiterType"/>
     <v-row class="mt-4">
-        <v-col cols="12" lg="4" md="4">
-            <IntroCard />
-        </v-col>
-        <v-col cols="12" lg="8" md="8">
+        <v-col cols="12" lg="12" md="12">
             <RecruiterProfileForm 
                 :userData="usersStore.userData"
                 :recruiterType="usersStore.recruiterType"

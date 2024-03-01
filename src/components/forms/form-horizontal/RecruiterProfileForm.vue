@@ -7,7 +7,6 @@ const userInfo = ref(props.userData);
 const companies = ref(props.companies);
 const industries = ref(props.industries);
 const recruiterType = ref(props.recruiterType);
-const industriesSelects = ref([]);
 </script>
 <template>
     <v-card elevation="10" >
@@ -17,12 +16,19 @@ const industriesSelects = ref([]);
             </div>
         </v-card-item>
         <v-divider></v-divider>
+        <v-sheet class="pa-6">
+            <h6 class="text-h6">Introduce your self</h6>
+            <div class="mt-6">
+                <v-textarea outlined name="Note"></v-textarea>
+            </div>
+        </v-sheet>
+        <v-divider></v-divider>
         <!----Account Details---->
         <v-card-text class="pb-0">
             <h6 class="text-h6">Account Details</h6>
             <div class="mt-6">
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Email</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
@@ -39,7 +45,7 @@ const industriesSelects = ref([]);
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Password</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
@@ -63,7 +69,7 @@ const industriesSelects = ref([]);
             <h6 class="text-h6">Personal Info</h6>
             <div class="mt-6">
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Full Name</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
@@ -71,7 +77,7 @@ const industriesSelects = ref([]);
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Company</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
@@ -89,7 +95,7 @@ const industriesSelects = ref([]);
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Recruiter type</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
@@ -106,7 +112,7 @@ const industriesSelects = ref([]);
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Url</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
@@ -115,7 +121,7 @@ const industriesSelects = ref([]);
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Phone No</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
@@ -124,7 +130,7 @@ const industriesSelects = ref([]);
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Work years</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">
@@ -133,7 +139,7 @@ const industriesSelects = ref([]);
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-3">
-                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0">
+                    <v-col cols="12" sm="3" class="pb-sm-3 pb-0 text-right">
                         <v-label class=" font-weight-medium">Industries</v-label>
                     </v-col>
                     <v-col cols="12" sm="9">

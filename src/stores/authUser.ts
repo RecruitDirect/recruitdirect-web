@@ -23,34 +23,36 @@ export const useRecruiterStore = defineStore({
     }),
     actions: {
         async loadUser() {
-            this.userData = {
-                id: 12,
-                name: "Jian Hou",
-                email: "houjian.max@gmail.com",
-                type: "RECRUITER",
-                workYears: 5,
-                url: "linkedin/jihou",
-                company: {
-                    id: 1,
-                    name: "Infox",
-                    url: "test.com",
-                    size: 34,
-                    location: "Seattle"
-                },
-                active: true,
-                industries: ['Internet', 'Retail'],
-                phoneNum: '2343456789'
-            };
-            localStorage.setItem('userData', JSON.stringify(this.userData));
-            return Promise.resolve(this.userData);
-            // return await axios.get('http://localhost:5001/recruiter/info/email?email=' + this.userEmail)
-            //     .then((res => {
-            //         this.userData = res.data;
-            //         console.log(this.userData);
-            //     }))
-            //     .catch((error) => {
-            //         console.log(error);
-            //     });
+            // this.userData = {
+            //     id: 12,
+            //     name: "Jian Hou",
+            //     email: "houjian.max@gmail.com",
+            //     type: "RECRUITER",
+            //     workYears: 5,
+            //     url: "linkedin/jihou",
+            //     company: {
+            //         id: 1,
+            //         name: "Infox",
+            //         url: "test.com",
+            //         size: 34,
+            //         location: "Seattle"
+            //     },
+            //     active: true,
+            //     industries: ['Internet', 'Retail'],
+            //     phoneNum: '2343456789',
+            //     intro: ''
+            // };
+            // localStorage.setItem('userData', JSON.stringify(this.userData));
+            // return Promise.resolve(this.userData);
+            return await axios.get('http://localhost:5001/recruiter/info/email?email=' + this.userEmail)
+                .then((res => {
+                    this.userData = res.data;
+                    localStorage.setItem('userData', JSON.stringify(this.userData));
+                    console.log(this.userData);
+                }))
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }
 });
