@@ -4,28 +4,31 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+### Build locally ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+1. install nodejs version 16+
+2. install npm
+3. clone repo
+4. build:
+```
+npm install
 
-### How do I get set up? ###
+npm run build
+```
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Run locally ###
 
-### Contribution guidelines ###
+```
+npm run dev
+```
+Open http://localhost:5173 from browser
 
-* Writing tests
-* Code review
-* Other guidelines
+### Code change ###
 
-### Who do I talk to? ###
+1. create your own branch from main branch
+   ```
+   git checkout -b yourbranchname
+   ```
+2. commit and push your change
+3. create pull request and let @jian know
 
-* Repo owner or admin
-* Other community or team contact
