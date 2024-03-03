@@ -24,24 +24,40 @@ import { blogCard } from "@/_mockApis/components/widget/card";
                         <RouterLink class="text-decoration-underline color-inherits" :to="card.link">{{ card.title }}</RouterLink>
                   </h5>
                   <v-card-item class="pt-0">
-                        <v-chip class="text-body-2 font-weight-medium bg-grey100 text-decoration-none" size="small" v-text="card.category"></v-chip>
                         <div class="d-flex align-center justify-space-between">
+                            <div class="d-flex align-center start">
                             <div>
-                              <v-icon size="22">mdi-map-marker</v-icon>
-                                <v-avatar class="" size="18">
-                                    <MapPinIcon size="18" />
+                              <v-avatar class="ml-4" size="22">
+                                <v-icon size="22">mdi-map-marker</v-icon>
                                 </v-avatar>
+                              
                                 <span class="text-subtitle-1 ml-2" v-text="card.view"></span>
-                                <v-avatar class="ml-4" size="18">
-                                    <Message2Icon size="18" />
-                                </v-avatar>
+                            </div>
+                            <div>
+                                <v-avatar class="ml-4" size="22">
+                                <v-icon size="22">mdi-briefcase</v-icon>
+                              </v-avatar>
                                 <span class="text-subtitle-1 ml-2" v-text="card.comments"></span>
+                            </div>
                             </div>
                             <div>
                                 <v-avatar size="10">
                                     <CircleIcon size="10" />
                                 </v-avatar>
                                 <span class="text-subtitle-2 ml-2" v-text="card.time"></span>
+                            </div>
+                        </div>
+                    </v-card-item>
+                    <v-card-item class="pt-0">
+                        <div class="d-flex align-center start">
+                            <div>
+                              
+                                <span class="text-title ">Salary: </span>
+                                <span class="text-subtitle-1 ml-2" v-text="card.view"></span>
+                            </div>
+                            <div>
+                              <span class="text-title ">Bonus: </span>
+                                <span class="text-subtitle-1 ml-2" v-text="card.comments"></span>
                             </div>
                         </div>
                     </v-card-item>
