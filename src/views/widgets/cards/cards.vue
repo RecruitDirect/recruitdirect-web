@@ -18,6 +18,7 @@ import UpcommingActivityCard from "@/components/widgets/cards/UpcommingActivityC
 import BackgroundCard from "@/components/widgets/cards/BackgroundCard.vue";
 import SampleCard from "@/components/widgets/cards/SampleCard.vue";
 import ImageCards from "@/components/widgets/cards/ImageCards.vue";
+import JobListCard from '@/components/widgets/cards/JobListCard.vue';
 
 // theme breadcrumb
 const page = ref({ title: 'Cards' });
@@ -37,6 +38,9 @@ const breadcrumbs = ref([
 <template>
     <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
     <v-row>
+
+        <JobListCard />
+
         <!-- Blog cards -->
         <v-col cols="12">
             <BlogCards />

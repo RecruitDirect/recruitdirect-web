@@ -105,6 +105,7 @@ type backIcon={
 type imgCard={
     image: string;
     color: string;
+    title: string
 };
 
 export type{cardsType, followCard,musicCards,productsCards, socialiconCards,profileCard,upcommingLists,userCard,paymentGateway,recentTrans,backIcon,imgCard}

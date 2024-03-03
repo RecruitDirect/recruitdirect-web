@@ -437,14 +437,17 @@ const imgCardData: imgCard[] = [
     {
         image: proimg1,
         color: "secondary",
+        title: "test title"
       },
       {
         image: proimg2,
         color: "error",
+        title: "test title"
       },
       {
         image: proimg4,
         color: "primary",
+        title: "test title"
       },
 ]
 
