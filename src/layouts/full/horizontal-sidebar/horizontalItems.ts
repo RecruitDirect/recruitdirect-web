@@ -80,6 +80,11 @@ const horizontalItems: menu[] = [
         to: '#',
         children: [
             {
+                title: 'JobList',
+                icon: CircleDotIcon,
+                to: '/recruiter/joblist'
+            },
+            {
                 title: 'Chats',
                 icon: CircleDotIcon,
                 to: '/apps/chats'

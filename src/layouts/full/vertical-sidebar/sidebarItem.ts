@@ -1,62 +1,62 @@
 import {
-  ChartPieIcon,
-  CoffeeIcon,
-  CpuIcon,
-  FlagIcon,
-  BasketIcon,
-  ApertureIcon,
-  LayoutGridIcon,
-  BoxIcon,
-  Message2Icon,
-  FilesIcon,
-  CalendarIcon,
-  UserCircleIcon,
-  ChartBarIcon,
-  ShoppingCartIcon,
-  ChartLineIcon,
-  ChartAreaIcon,
-  ChartDotsIcon,
-  ChartArcsIcon,
-  ChartCandleIcon,
-  ChartDonut3Icon,
-  ChartRadarIcon,
-  LayoutIcon,
-  CardboardsIcon,
-  PhotoIcon,
-  FileTextIcon,
-  BoxAlignBottomIcon,
-  BoxAlignLeftIcon,
-  FileDotsIcon,
-  EditCircleIcon,
-  AppsIcon,
-  BorderAllIcon,
-  BorderHorizontalIcon,
-  BorderInnerIcon,
-  BorderTopIcon,
-  BorderVerticalIcon,
-  BorderStyle2Icon,
-  LoginIcon,
-  CircleDotIcon,
-  UserPlusIcon,
-  RotateIcon,
-  ZoomCodeIcon,
-  SettingsIcon,
-  AlertCircleIcon,
-  BrandTablerIcon,
-  CodeAsterixIcon,
-  BrandCodesandboxIcon,
-  ColumnsIcon,
-  RowInsertBottomIcon,
-  EyeTableIcon,
-  SortAscendingIcon,
-  PageBreakIcon,
-  FilterIcon,
-  BoxModelIcon,
-  ServerIcon,
-  JumpRopeIcon,
-  LayoutKanbanIcon
-
-} from 'vue-tabler-icons';
+  IconChartPie,
+  IconCoffee,
+  IconCpu,
+  IconFlag,
+  IconBasket,
+  IconAperture,
+  IconLayoutGrid,
+  IconBox,
+  IconMessage2,
+  IconFiles,
+  IconCalendar,
+  IconUserCircle,
+  IconChartBar,
+  IconShoppingCart,
+  IconChartLine,
+  IconChartArea,
+  IconChartDots,
+  IconChartArcs,
+  IconChartCandle,
+  IconChartDonut3,
+  IconChartRadar,
+  IconLayout,
+  IconCardboards,
+  IconPhoto,
+  IconFileText,
+  IconBoxAlignBottom,
+  IconBoxAlignLeft,
+  IconFileDots,
+  IconEditCircle,
+  IconApps,
+  IconBorderAll,
+  IconBorderHorizontal,
+  IconBorderInner,
+  IconBorderTop,
+  IconBorderVertical,
+  IconBorderStyle2,
+  IconLogin,
+  IconCircleDot,
+  IconUserPlus,
+  IconRotate,
+  IconZoomCode,
+  IconSettings,
+  IconAlertCircle,
+  IconBrandTabler,
+  IconCodeAsterix,
+  IconBrandCodesandbox,
+  IconColumns,
+  IconRowInsertBottom,
+  IconEyeTable,
+  IconSortAscending,
+  IconPageBreak,
+  IconFilter,
+  IconBoxModel,
+  IconServer,
+  IconJumpRope,
+  IconLayoutKanban,
+  IconWorldSearch
+} from '@tabler/icons-vue';
 
 export interface menu {
   header?: string;
@@ -67,7 +67,6 @@ export interface menu {
   chipBgColor?: string;
   chipColor?: string;
   chipVariant?: string;
-  chipIcon?: string;
   children?: menu[];
   disabled?: boolean;
   type?: string;
@@ -78,38 +77,38 @@ const sidebarItem: menu[] = [
   { header: 'Home' },
   {
     title: "Analytical",
-    icon: ChartPieIcon,
+    icon: IconChartPie,
     to: "/dashboards/analytical",
   },
   {
     title: "Classic",
-    icon: CoffeeIcon,
+    icon: IconCoffee,
     to: "/dashboards/classic",
   },
   {
     title: "Demographical",
-    icon: CpuIcon,
+    icon: IconCpu,
     to: "/dashboards/demographical",
   },
   {
     title: "Minimal",
-    icon: FlagIcon,
+    icon: IconFlag,
     to: "/dashboards/minimal",
   },
   {
     title: "eCommerce",
-    icon: ShoppingCartIcon,
+    icon: IconShoppingCart,
     to: "/dashboards/ecommerce",
   },
   {
     title: "Modern",
-    icon: ApertureIcon,
+    icon: IconAperture,
     to: "/dashboards/modern",
   },
   { header: 'Apps' },
   {
     title: 'Contact',
-    icon: BoxIcon,
+    icon: IconBox,
     to: '/apps/contacts',
     chip: '2',
     chipColor: 'surface',
@@ -118,155 +117,160 @@ const sidebarItem: menu[] = [
 
   {
     title: 'Blog',
-    icon: ChartDonut3Icon,
+    icon: IconChartDonut3,
     to: '/',
     children: [
       {
         title: 'Posts',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/apps/blog/posts'
       },
       {
         title: 'Detail',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/apps/blog/early-black-friday-amazon-deals-cheap-tvs-headphones'
       }
     ]
   },
   {
     title: 'E-Commerce',
-    icon: BasketIcon,
+    icon: IconBasket,
     to: '/ecommerce/',
     children: [
       {
         title: 'Shop',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ecommerce/products'
       },
       {
         title: 'Detail',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ecommerce/product/detail/1'
       },
       {
         title: 'List',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ecommerce/productlist'
       },
       {
         title: 'Checkout',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ecommerce/checkout'
       }
     ]
   },
   {
+    title: 'JobList',
+    icon: IconWorldSearch,
+    to: '/recruiter/joblist'
+  },
+  {
     title: 'Chats',
-    icon: Message2Icon,
+    icon: IconMessage2,
     to: '/apps/chats'
   },
   {
     title: 'User Profile',
-    icon: UserCircleIcon,
+    icon: IconUserCircle,
     to: '/',
     children: [
       {
         title: 'Profile',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/apps/user/profile'
       },
       {
         title: 'Followers',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/apps/user/profile/followers'
       },
       {
         title: 'Friends',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/apps/user/profile/friends'
       },
       {
         title: 'Gallery',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/apps/user/profile/gallery'
       }
     ]
   },
   {
     title: 'Notes',
-    icon: FilesIcon,
+    icon: IconFiles,
     to: '/apps/notes'
   },
   {
     title: 'Calendar',
-    icon: CalendarIcon,
+    icon: IconCalendar,
     to: '/apps/calendar'
   },
   {
     title: 'Kanban',
-    icon: LayoutKanbanIcon,
+    icon: IconLayoutKanban,
     to: '/apps/kanban'
   },
 
   { header: 'Components' },
   {
     title: 'Ui Components',
-    icon: LayoutGridIcon,
+    icon: IconLayoutGrid,
     to: '/components/',
     children: [
       {
         title: 'Alert',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/alert'
       },
       {
         title: 'Accordion',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/accordion'
       },
       {
         title: 'Avatar',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/avatar'
       },
       {
         title: 'Chip',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/chip'
       },
       {
         title: 'Dialog',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/dialogs'
       },
       {
         title: 'List',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/list'
       },
       {
         title: 'Menus',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/menus'
       },
       {
         title: 'Rating',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/rating'
       },
       {
         title: 'Tabs',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/tabs'
       },
       {
         title: 'Tooltip',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/tooltip'
       },
       {
         title: 'Typography',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/ui-components/typography'
       }
     ]
@@ -274,287 +278,287 @@ const sidebarItem: menu[] = [
   { header: 'Charts' },
   {
     title: 'Line',
-    icon: ChartLineIcon,
+    icon: IconChartLine,
     to: '/charts/line-chart'
   },
   {
     title: 'Gredient',
-    icon: ChartArcsIcon,
+    icon: IconChartArcs,
     to: '/charts/gredient-chart'
   },
   {
     title: 'Area',
-    icon: ChartAreaIcon,
+    icon: IconChartArea,
     to: '/charts/area-chart'
   },
   {
     title: 'Candlestick',
-    icon: ChartCandleIcon,
+    icon: IconChartCandle,
     to: '/charts/candlestick-chart'
   },
   {
     title: 'Column',
-    icon: ChartDotsIcon,
+    icon: IconChartDots,
     to: '/charts/column-chart'
   },
   {
     title: 'Doughnut & Pie',
-    icon: ChartDonut3Icon,
+    icon: IconChartDonut3,
     to: '/charts/doughnut-pie-chart'
   },
   {
     title: 'Radialbar & Radar',
-    icon: ChartRadarIcon,
+    icon: IconChartRadar,
     to: '/charts/radialbar-chart'
   },
   { header: 'Forms' },
   {
     title: 'Form Elements',
-    icon: AppsIcon,
+    icon: IconApps,
     to: '/components/',
     children: [
       {
         title: 'Autocomplete',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/autocomplete'
       },
       {
         title: 'Combobox',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/combobox'
       },
       {
         title: 'Button',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/button'
       },
       {
         title: 'Checkbox',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/checkbox'
       },
       {
         title: 'Custom Inputs',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/custominputs'
       },
       {
         title: 'File Inputs',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/fileinputs'
       },
       {
         title: 'Radio',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/radio'
       },
       {
         title: 'Date Time',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/date-time'
       },
       {
         title: 'Select',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/select'
       },
       {
         title: 'Slider',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/slider'
       },
       {
         title: 'Switch',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/forms/form-elements/switch'
       }
     ]
   },
   {
     title: 'Form Layout',
-    icon: FileTextIcon,
+    icon: IconFileText,
     to: '/forms/form-layouts'
   },
   {
     title: 'Form Horizontal',
-    icon: BoxAlignBottomIcon,
+    icon: IconBoxAlignBottom,
     to: '/forms/form-horizontal'
   },
   {
     title: 'Form Vertical',
-    icon: BoxAlignLeftIcon,
+    icon: IconBoxAlignLeft,
     to: '/forms/form-vertical'
   },
   {
     title: 'Form Custom',
-    icon: FileDotsIcon,
+    icon: IconFileDots,
     to: '/forms/form-custom'
   },
   {
     title: 'Form Validation',
-    icon: FilesIcon,
+    icon: IconFiles,
     to: '/forms/form-validation'
   },
   {
     title: 'Editor',
-    icon: EditCircleIcon,
+    icon: IconEditCircle,
     to: '/forms/editor'
   },
 
   { header: 'Widgets' },
   {
     title: 'Cards',
-    icon: CardboardsIcon,
+    icon: IconCardboards,
     to: '/widgets/cards'
   },
   {
     title: 'Banners',
-    icon: PhotoIcon,
+    icon: IconPhoto,
     to: '/widgets/banners'
   },
   {
     title: 'Charts',
-    icon: ChartBarIcon,
+    icon: IconChartBar,
     to: '/widgets/charts'
   },
   { header: 'Tables' },
   {
     title: 'Basic Table',
-    icon: BorderAllIcon,
+    icon: IconBorderAll,
     to: '/tables/basic'
   },
   {
     title: 'Dark Table',
-    icon: BorderHorizontalIcon,
+    icon: IconBorderHorizontal,
     to: '/tables/dark'
   },
   {
     title: 'Density Table',
-    icon: BorderInnerIcon,
+    icon: IconBorderInner,
     to: '/tables/density'
   },
   {
     title: 'Fixed Header Table',
-    icon: BorderTopIcon,
+    icon: IconBorderTop,
     to: '/tables/fixed-header'
   },
   {
     title: 'Height Table',
-    icon: BorderVerticalIcon,
+    icon: IconBorderVertical,
     to: '/tables/height'
   },
   {
     title: 'Editable Table',
-    icon: BorderStyle2Icon,
+    icon: IconBorderStyle2,
     to: '/tables/editable'
   },
    { header: 'Data Tables' },
   {
     title: 'Basic Table',
-    icon: ColumnsIcon,
+    icon: IconColumns,
     to: '/datatables/basic'
   },
   {
     title: 'Header Table',
-    icon: RowInsertBottomIcon,
+    icon: IconRowInsertBottom,
     to: '/datatables/header'
   },
   {
     title: 'Selection Table',
-    icon: EyeTableIcon,
+    icon: IconEyeTable,
     to: '/datatables/selection'
   },
   {
     title: 'Sorting Table',
-    icon: SortAscendingIcon,
+    icon: IconSortAscending,
     to: '/datatables/sorting'
   },
   {
     title: 'Pagination Table',
-    icon: PageBreakIcon,
+    icon: IconPageBreak,
     to: '/datatables/pagination'
   },
   {
     title: 'Filtering Table',
-    icon: FilterIcon,
+    icon: IconFilter,
     to: '/datatables/filtering'
   },
   {
     title: 'Grouping Table',
-    icon: BoxModelIcon,
+    icon: IconBoxModel,
     to: '/datatables/grouping'
   },
   {
     title: 'Table Slots',
-    icon: ServerIcon,
+    icon: IconServer,
     to: '/datatables/slots'
   },
   { header: 'Authentication' },
 
   {
     title: 'Login',
-    icon: LoginIcon,
+    icon: IconLogin,
     to: '#',
     children: [
       {
         title: 'Side Login',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/'
       },
       {
         title: 'Boxed Login',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/auth/login2'
       }
     ]
   },
   {
     title: 'Register',
-    icon: UserPlusIcon,
+    icon: IconUserPlus,
     to: '#',
     children: [
       {
         title: 'Side Register',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/auth/register'
       },
       {
         title: 'Boxed Register',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/auth/register2'
       }
     ]
   },
   {
     title: 'Forgot Password',
-    icon: RotateIcon,
+    icon: IconRotate,
     to: '#',
     children: [
       {
         title: 'Side Forgot Password',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/auth/forgot-password'
       },
       {
         title: 'Boxed Forgot Password',
-        icon: CircleDotIcon,
+        icon: IconCircleDot,
         to: '/auth/forgot-password2'
       }
     ]
   },
   {
     title: 'Two Steps',
-    icon: ZoomCodeIcon,
+    icon: IconZoomCode,
     to: '#',
     children: [
       {
         title: 'Side Two Steps',
-        icon: SettingsIcon,
+        icon: IconSettings,
         to: '/auth/two-step'
       },
       {
         title: 'Boxed Two Steps',
-        icon: SettingsIcon,
+        icon: IconSettings,
         to: '/auth/two-step2'
       }
     ]
@@ -562,23 +566,23 @@ const sidebarItem: menu[] = [
 
   {
     title: 'Error',
-    icon: AlertCircleIcon,
+    icon: IconAlertCircle,
     to: '/auth/404'
   },
   {
     title: 'Maintenance',
-    icon: SettingsIcon,
+    icon: IconSettings,
     to: '/auth/maintenance'
   },
-  { header: "Icons" },
+  { header: "s" },
   {
     title: "Material",
-    icon: BrandCodesandboxIcon,
+    icon: IconBrandCodesandbox,
     to: "/icons/material",
   },
   {
     title: "Tabler",
-    icon: BrandTablerIcon,
+    icon: IconBrandTabler,
     to: "/icons/tabler",
   },
 

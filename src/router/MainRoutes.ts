@@ -16,6 +16,11 @@ const MainRoutes = {
             component: () => import('@/views/dashboards/analytical/Analytical.vue'),
         },
         {
+            name: 'joblist',
+            path: '/recruiter/joblist',
+            component: () => import('@/views/apps/RecruiterJobList.vue'),
+        },
+        {
             name: 'Classic',
             path: '/dashboards/classic',
             component: () => import('@/views/dashboards/classic/Classic.vue'),
