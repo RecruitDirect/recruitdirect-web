@@ -1,23 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { useJobsStore } from '@/stores/jobList'
+
 /* Breadcrumb component */
 import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
 
-/*Call Components*/
-import PaymentGateways from "@/components/widgets/cards/PaymentGateways.vue";
-import RecentTransactions from "@/components/widgets/cards/RecentTransactions.vue";
-import BlogCards from "@/components/widgets/cards/BlogCards.vue";
-import ProductCards from "@/components/widgets/cards/ProductCards.vue";
-import MusicCards from "@/components/widgets/cards/MusicCards.vue";
-import FollowerCards from "@/components/widgets/cards/FollowerCards.vue";
-import UserCards from "@/components/widgets/cards/UserCards.vue";
-import ProfileCards from "@/components/widgets/cards/ProfileCards.vue";
-import Settings from "@/components/widgets/cards/Settings.vue";
-import GiftCards from "@/components/widgets/cards/GiftCards.vue";
-import UpcommingActivityCard from "@/components/widgets/cards/UpcommingActivityCard.vue";
-import BackgroundCard from "@/components/widgets/cards/BackgroundCard.vue";
-import SampleCard from "@/components/widgets/cards/SampleCard.vue";
-import ImageCards from "@/components/widgets/cards/ImageCards.vue";
 import JobListCard from '@/components/widgets/cards/JobListCard.vue';
 
 // theme breadcrumb
@@ -34,11 +21,24 @@ const breadcrumbs = ref([
         href: '#'
     }
 ]);
+const loading = ref(true)
+const jobsStore = useJobsStore()
+
+onMounted(() => {
+    jobsStore.loadJobs().then(res => {
+        loading.value = false;
+    });
+});
+
 </script>
 <template>
     <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
     <v-row>
-
-        <JobListCard />
+        <v-col cols="8" md="8" sm="8" v-for="job in jobsStore.jobs" :key="job.id">
+            <JobListCard :job="job"
+                         :jobType="jobsStore.jobType"
+                         :remoteType="jobsStore.remoteType"
+            />
+        </v-col>
     </v-row>
 </template>
