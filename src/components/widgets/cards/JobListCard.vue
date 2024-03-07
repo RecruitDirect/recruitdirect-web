@@ -13,14 +13,14 @@ const remoteType = ref(props.remoteType);
   <!-- ----------------------------------------------------------------------------- -->
   <!-- job Card -->
   <!-- ----------------------------------------------------------------------------- -->
-  <v-card elevation="10" rounded="md" class="px-4">
+  <v-card elevation="10" rounded="md" class="px-4 mb-6">
       <v-row class="mt-md-0 mt-sm-3 mt-3 pl-2">
           <v-col cols="2" sm="2" class="d-flex py-0 px-0 align-start justify-center flex-wrap">
               <v-card-item>
                 <v-avatar rounded="lg" class="mx-2" size="100" cla>
                     <img :src="job.coveravatar" :alt="job.avatar" class="h-100 w-100"/>
                 </v-avatar>
-                <div class="text-title-1 mt-2 text-center font-weight-medium">
+                <div class="text-subtitle-2 mt-2 text-center font-weight-medium">
                   <a href="job.company.url">{{ job.company.name }}</a>
                 </div>
                 <div>

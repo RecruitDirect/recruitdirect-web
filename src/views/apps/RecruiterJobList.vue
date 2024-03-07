@@ -2,10 +2,8 @@
 import { onMounted, ref } from 'vue';
 import { useJobsStore } from '@/stores/jobList'
 
-/* Breadcrumb component */
-import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
-
 import JobListCard from '@/components/widgets/cards/JobListCard.vue';
+import JobsFilters from '@/components/apps/ecommerce/listing/JobsFilters.vue';
 
 // theme breadcrumb
 const page = ref({ title: 'Cards' });
@@ -31,13 +29,20 @@ onMounted(() => {
 });
 
 </script>
+
 <template>
-    <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
+    <!-- -------------------------------------- -->
+    <!-- Left Sidebar -->
+    <!-- -------------------------------------- -->    
     <v-row>
-        <v-col cols="8" md="8" sm="8" v-for="job in jobsStore.jobs" :key="job.id">
-            <JobListCard :job="job"
-                         :jobType="jobsStore.jobType"
-                         :remoteType="jobsStore.remoteType"
+        <v-col cols="3">
+            <JobsFilters />
+        </v-col>
+        <v-col cols="8" md="8" sm="8">
+            <JobListCard v-for="job in jobsStore.jobs" :key="job.id"
+                    :job="job"
+                    :jobType="jobsStore.jobType"
+                    :remoteType="jobsStore.remoteType"
             />
         </v-col>
     </v-row>
