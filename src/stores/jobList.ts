@@ -29,6 +29,16 @@ export const useJobsStore = defineStore({
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        async searchJobs(searchValue: String, jobTypes: Array<String>, remoteTypes: Array<String>, companies: Array<Number>) {
+            return await axios.get('http://localhost:5001/job/list/recruitingjobs?')
+                .then((res => {
+                    this.jobs = res.data;
+                    console.log(this.jobs.length);
+                }))
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }
 });
