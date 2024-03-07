@@ -4,22 +4,20 @@ import { ref, onMounted, computed } from 'vue';
 const panel = ref([0, 1, 2, 3, 4]);
 const selectedJobTypes = ref([]);
 const selectedRemoteTypes = ref([]);
-const selectCompanies = ref([]);
+const selectedCompanies = ref([]);
 const searchValue = ref('');
+
+const emit = defineEmits(['searchJob']);
 
 const props = defineProps(['jobType', 'remoteType', 'companies']);
 const jobType = ref(props.jobType);
 const remoteType = ref(props.remoteType);
 const companies = ref(props.companies);
 
-function search() {
-    console.log('searching');
-}
-
 </script>
 <template>
     <v-sheet class="pa-4 pt-1">
-        <v-btn color="primary" @click="search()" block class="my-5" size="large" elevation-10>Search</v-btn>
+        <v-btn color="primary" @click="emit('searchJob', searchValue, selectedJobTypes, selectedRemoteTypes, selectedCompanies)" block class="my-5" size="large" elevation-10>Search</v-btn>
         <v-text-field
             variant="outlined"
             v-model="searchValue"
@@ -29,7 +27,7 @@ function search() {
             density="compact"
             color="primary"
             class="my-4"
-            @keydown.enter="search()"
+            @keydown.enter="emit('searchJob', searchValue, selectedJobTypes, selectedRemoteTypes, selectedCompanies)"
         ></v-text-field>
         <v-divider />
         <v-expansion-panels multiple v-model="panel">
@@ -56,9 +54,9 @@ function search() {
             </v-expansion-panel>
             <v-divider />
             <v-expansion-panel elevation="0">
-                <v-card-title class="font-weight-medium custom-accordion"> Company </v-card-title>
+                <v-card-title class="font-weight-medium custom-accordion">Company</v-card-title>
                 <v-select
-                    v-model="selectCompanies"
+                    v-model="selectedCompanies"
                     :items="companies"
                     item-title="name"
                     item-value="id"
