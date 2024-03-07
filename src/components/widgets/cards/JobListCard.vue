@@ -23,8 +23,8 @@ const remoteType = ref(props.remoteType);
                 <div class="text-subtitle-2 mt-2 text-center font-weight-medium">
                   <a href="job.company.url">{{ job.company.name }}</a>
                 </div>
-                <div>
-                  <span class="text-body-2 text-medium-emphasis text-center" v-text="job.company.size + ' employees'"></span>
+                <div class="text-center">
+                  <span class="text-body-2 text-medium-emphasis" v-text="job.company.size + ' employees'"></span>
                 </div>
               </v-card-item>
           </v-col>
