@@ -11,7 +11,19 @@ export const router = createRouter({
             component: () => import('@/views/authentication/Error.vue')
         },
         MainRoutes,
-        AuthRoutes
+        AuthRoutes,
+        {
+            path: '/',
+            meta: {
+                requiresAuth: false
+            },
+            redirect: '/',
+            component: () => import('@/layouts/full/FullLayout.vue'),
+            children: [{
+                path: '/job/details/:jobId', 
+                component: () => import('@/views/apps/blog/JobDetailPage.vue')
+            }]
+        }
     ]
 });
 

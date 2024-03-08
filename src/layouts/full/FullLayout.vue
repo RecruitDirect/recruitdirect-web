@@ -9,7 +9,7 @@ import { useCustomizerStore } from '../../stores/customizer';
 import { useRecruiterStore } from '@/stores/authUser';
 import { pl, zhHans } from 'vuetify/locale'
 const customizer = useCustomizerStore();
-const usersStore = useRecruiterStore().loadUser();
+const usersStore = useRecruiterStore();
 
 </script>
 
@@ -27,7 +27,7 @@ const usersStore = useRecruiterStore().loadUser();
             ]"
         >
             <!---Customizer location left side--->
-            <v-navigation-drawer app temporary elevation="10" location="left" v-model="customizer.Customizer_drawer" width="320" class="left-customizer">
+            <v-navigation-drawer v-if="usersStore.userEmail != null && usersStore.userEmail != undefined" app temporary elevation="10" location="left" v-model="customizer.Customizer_drawer" width="320" class="left-customizer">
                 <Customizer />
             </v-navigation-drawer>
             <VerticalHeaderVue v-if="!customizer.setHorizontalLayout" />
@@ -68,11 +68,11 @@ const usersStore = useRecruiterStore().loadUser();
             ]"
         >
             <!---Customizer location right side--->
-            <v-navigation-drawer app temporary elevation="10" location="right" v-model="customizer.Customizer_drawer" width="320">
+            <v-navigation-drawer v-if="usersStore.userEmail" app temporary elevation="10" location="right" v-model="customizer.Customizer_drawer" width="320">
                 <Customizer />
             </v-navigation-drawer>
             <VerticalHeaderVue v-if="!customizer.setHorizontalLayout" />
-            <VerticalSidebarVue v-if="!customizer.setHorizontalLayout" />
+            <VerticalSidebarVue v-if="!customizer.setHorizontalLayout && usersStore.userEmail" />
             <HorizontalHeader v-if="customizer.setHorizontalLayout" />
             <HorizontalSidebar v-if="customizer.setHorizontalLayout" />
             <v-main>

@@ -27,7 +27,7 @@ const authStore = userAuthStore();
                     </v-avatar>
                 </div>
                 <div class="profile-name d-flex align-center px-3">
-                    <h5 class="text-white font-weight-medium">{{ authStore.$state.user.displayName }}</h5>
+                    <h5 class="text-white font-weight-medium">{{ authStore.$state.user?.displayName || ''}}</h5>
                     <div class="ml-auto profile-logout">
                         <v-btn variant="text" icon rounded="md" color="white" @click="authStore.logout()">
                             <PowerIcon size="22"/>

@@ -10,7 +10,7 @@ export const useRecruiterStore = defineStore({
     state: () => ({
         // initialize state from local storage to enable user to stay logged in
         // @ts-ignore
-        userEmail: JSON.parse(localStorage.getItem('user')).email || null,
+        userEmail: JSON.parse(localStorage.getItem('user'))?.email || null,
         // @ts-ignore
         userData: JSON.parse(localStorage.getItem('userData')) || null,
         recruiterType: new Map<string, string>([

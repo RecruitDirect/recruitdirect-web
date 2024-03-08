@@ -21,7 +21,7 @@ const remoteType = ref(props.remoteType);
                     <img :src="job.coveravatar" :alt="job.avatar" class="h-100 w-100"/>
                 </v-avatar>
                 <div class="text-subtitle-2 mt-2 text-center font-weight-medium">
-                  <a href="job.company.url">{{ job.company.name }}</a>
+                  <a :href="job.company.url">{{ job.company.name }}</a>
                 </div>
                 <div class="text-center">
                   <span class="text-body-2 text-medium-emphasis" v-text="job.company.size + ' employees'"></span>
@@ -29,9 +29,9 @@ const remoteType = ref(props.remoteType);
               </v-card-item>
           </v-col>
           <v-col cols="10" sm="10">
-              <h6 class="text-h6 text-12 my-4 mx-2">
-                <a class="text-decoration-underline color-inherits" href="job.url">{{ job.name }}</a>
-              </h6>
+              <div class="text-h6 text-12 my-4 mx-2">
+                <a class="text-decoration-underline color-inherits" :href="job.url">{{ job.name }}</a>
+              </div>
               <v-card-item class="pt-0 px-0 py-0">
                     <div class="d-flex align-center justify-space-between">
                       <div class="d-flex align-center start">

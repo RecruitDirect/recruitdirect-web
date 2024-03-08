@@ -85,7 +85,6 @@ const MainRoutes = {
             path: '/apps/blog/:id',
             component: () => import('@/views/apps/blog/Detail.vue')
         },
-
         {
             name: 'UserProfile',
             path: '/apps/user/profile',
