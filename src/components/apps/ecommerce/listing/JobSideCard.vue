@@ -106,7 +106,7 @@ function filterReset() {
             </div>
         </div>
         <v-divider :thickness="1" class="border-opacity-75" color="black"></v-divider>
-        <div class="mt-4">
+        <div class="my-4">
             <div class="d-flex align-center" v-for="list in bonusList" :key="list.title">
                 <v-avatar class="rounded-md"  size="30">    
                     <component :is="list.icon" stroke-width="2" size="24" />
@@ -117,7 +117,8 @@ function filterReset() {
                 </div>
             </div>
         </div>
-        <v-card-item class="text-center pb-0">
+        <v-divider :thickness="1" class="border-opacity-75" color="black"></v-divider>
+        <v-card-item class="text-center py-0">
             <v-btn color="primary" @click="filterReset()"  block class="mt-5" >Start recruiting</v-btn>
         </v-card-item>
         <v-card-item class="text-center pt-0">
