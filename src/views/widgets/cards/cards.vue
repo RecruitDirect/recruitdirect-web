@@ -38,9 +38,6 @@ const breadcrumbs = ref([
 <template>
     <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
     <v-row>
-
-        <JobListCard />
-
         <!-- Blog cards -->
         <v-col cols="12">
             <BlogCards />

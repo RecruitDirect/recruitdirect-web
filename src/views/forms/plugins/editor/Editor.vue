@@ -7,38 +7,7 @@ import StarterKit from '@tiptap/starter-kit';
 import UiParentCard from '@/components/shared/UiParentCard.vue';
 import EditorMenubar from '@/components/forms/plugins/editor/EditorMenubar.vue';
 
-const editor = useEditor({
-    extensions: [StarterKit],
-    content: `
-  <h2>Hi there,</h2>
-      <p>
-        this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there
-        are all kind of basic text styles you’d probably expect from a text
-        editor. But wait until you see the lists:
-      </p>
-      <ul>
-        <li>That’s a bullet list with one …</li>
-        <li>… or two list items.</li>
-      </ul>
-      <p>
-        Isn’t that great? And all of that is editable. But wait, there’s more.
-        Let’s try a code block:
-      </p>
-      <pre><code class="language-css">body {
-  display: none;
-}</code></pre>
-      <p>
-        I know, I know, this is impressive. It’s only the tip of the iceberg
-        though. Give it a try and click a little bit around. Don’t forget to
-        check the other examples too.
-      </p>
-      <blockquote>
-        Wow, that’s amazing. Good work, boy! 👏
-        <br />
-        — Mom
-      </blockquote>
-      `
-});
+
 // theme breadcrumb
 const page = ref({ title: 'Editor' });
 const breadcrumbs = ref([
@@ -53,6 +22,26 @@ const breadcrumbs = ref([
         href: '#'
     }
 ]);
+const content = ref(`
+<p>[The introduction about the role, company and team]</p>
+<p></p>
+<h5>Role objectives</h5>
+<ul>
+  <li><p>...</p></li>
+  <li><p>...</p></li>
+</ul>
+<p></p>
+<h5>Role responsibilities</h5>
+<ul>
+  <li><p>...</p></li>
+  <li><p>...</p></li>
+</ul>
+      `)
+
+const editor = useEditor({
+    extensions: [StarterKit],
+    content: content.value
+});
 </script>
 
 <template>
@@ -63,6 +52,9 @@ const breadcrumbs = ref([
         </div>
         <editor-content :editor="editor" />
     </UiParentCard>
+    <v-card class="my-6">
+      <div class="pa-8" v-html="this.editor?.getHTML()"></div>
+    </v-card>
 </template>
 
 <style lang="scss"></style>

@@ -1,37 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-// common components
-import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
-import BlogDetail from '@/components/apps/blog/detail/blogDetail.vue';
+import JobDetail from '@/components/apps/blog/detail/jobDetails.vue';
+import JobSideCard from '@/components/apps/ecommerce/listing/JobSideCard.vue'
 
-// theme breadcrumb
-const page = ref({ title: 'Blog Detail' });
-const breadcrumbs = ref([
-    {
-        text: 'Home',
-        disabled: false,
-        to: '/'
-    },
-    {
-        text: 'Blog',
-        disabled: false,
-        to: '/apps/blog/posts'
-    },
-    {
-        text: 'Blog post',
-        disabled: true,
-    }
-]);
 </script>
 
 <template>
     <!-- ---------------------------------------------------- -->
     <!-- Table Basic -->
     <!-- ---------------------------------------------------- -->
-    <BaseBreadcrumb :title="page.title" class="" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
     <v-row>
-        <v-col cols="13">
-          <BlogDetail/>
+        <v-col cols="9">
+          <JobDetail/>
+        </v-col>
+        <v-col cols="3">
+            <JobSideCard></JobSideCard>
         </v-col>
     </v-row>
 </template>

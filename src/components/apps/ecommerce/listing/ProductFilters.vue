@@ -141,49 +141,22 @@ function filterReset() {
             </v-expansion-panel>
             <v-divider />
             <v-expansion-panel elevation="0">
-                <v-expansion-panel-title class="font-weight-medium custom-accordion"> Colors </v-expansion-panel-title>
-                <v-expansion-panel-text class="acco-body">
-                    <div class="d-flex gap-2 flex-wrap v-col-11 px-0">
-                        <template v-for="(catcolor, i) in filterbyColors" :key="i" v-if="filterbyColors.length > 0">
-                            <v-avatar
-                                class="cursor-pointer"
-                                :color="catcolor"
-                                variant="flat"
-                                size="small"
-                                @click="store.sortByColor(catcolor)"
-                            >
-                                <template v-if="store.color === catcolor">
-                                    <CheckIcon size="13" />
-                                </template>
-                            </v-avatar>
-                        </template>
-                    </div>
-                </v-expansion-panel-text>
-            </v-expansion-panel>
-            <v-divider />
-            <v-expansion-panel elevation="0">
-                <v-expansion-panel-title class="font-weight-medium custom-accordion"> Price </v-expansion-panel-title>
-                <v-expansion-panel-text class="acco-body">
-                    <v-radio-group v-model="selectPrice" class="custom-radio-box">    
-
-                        <v-radio
-                            v-for="pricing in priceSort"
-                            :key="pricing.label"
-                            :label="pricing.label"
-                            v-model="selectPrice"
-                            color="primary"
-                            :value="pricing.price"
-                            hide-details
-                        >
-                        </v-radio>
-                    </v-radio-group>
-                </v-expansion-panel-text>
-            </v-expansion-panel>
-            <v-divider />
-            <v-expansion-panel elevation="0">
                 <v-expansion-panel-title class="font-weight-medium custom-accordion"> Rating </v-expansion-panel-title>
                 <v-expansion-panel-text class="acco-body">
-                    <v-rating hover color="warning" v-model="selectRating" class="ma-2" density="compact"></v-rating>
+                    <v-card-item class="pt-4">
+                    <div class="">
+                        <div class="text-h5 mb-2">About the company</div>
+                        <div class="my-1">
+                            <span class="text-body-2 font-weight-medium" v-text="'Employee: '"></span>
+                            <span class="text-body-2 ml-2" v-text="'1234'"></span>
+                        </div>
+                        <div class=" text-body-2 font-weight-regular">
+                            <p>
+                            The internet continues to develop exponentially, and the job hunting for students and junior graduates needs help to collect jobs from a lot of different job websites, tools to improve efficiency of work related to job hunting. Fresherjob is the platform to help those junior friends find more suitable jobs. We’re looking for a skilled web developer to join our team to develop a new generation of platforms to help all the job hunters increase efficiency and opportunities with AI.
+                            </p>
+                        </div>
+                    </div>
+                </v-card-item>
                 </v-expansion-panel-text>
             </v-expansion-panel>
         </v-expansion-panels>

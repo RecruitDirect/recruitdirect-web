@@ -15,7 +15,8 @@ import {
     UserIcon,
     GiftIcon,
     GitBranchIcon,
-    CardboardsIcon
+    CardboardsIcon,
+    BusinessplanIcon
 } from 'vue-tabler-icons';
 
 import user1 from '@/assets/images/profile/user-1.jpg';
@@ -35,6 +36,7 @@ import icon1 from "@/assets/images/svgs/icon-paypal.svg";
 import icon2 from "@/assets/images/svgs/icon-office-bag.svg";
 import icon3 from "@/assets/images/svgs/icon-master-card.svg";
 import icon4 from "@/assets/images/svgs/icon-pie.svg";
+import { IconFileCv, IconStereoGlasses, IconTrophyFilled } from '@tabler/icons-vue';
 
 /*--Blog Cards--*/
 const blogCard: cardsType[] = [
@@ -196,39 +198,39 @@ const profileCards: profileCard[] = [
 /*--Upcomming Activity Cards--*/
 const upcommingCards: upcommingLists[] = [
     {
-        icon: MapPinIcon,
-        title: 'Trip to singapore',
-        subtitle: 'working on',
+        icon: BusinessplanIcon,
+        title: 'Recruiting bonus',
+        subtitle: '',
         rank: '5 mins',
         bgcolor: 'primary'
     },
     {
-        icon: DatabaseIcon,
-        title: 'Archived Data',
-        subtitle: 'working on',
-        rank: '10 mins',
+        icon: IconFileCv,
+        title: 'Resume review',
+        subtitle: '',
+        rank: '10',
         bgcolor: 'secondary'
     },
     {
-        icon: PhoneIcon,
-        title: 'Meeting with client',
-        subtitle: 'pending',
-        rank: '15 mins',
+        icon: IconStereoGlasses,
+        title: 'Interviewing',
+        subtitle: '',
+        rank: '2',
         bgcolor: 'warning'
     },
     {
-        icon: ScreenShareIcon,
-        title: 'Screening Task Team',
-        subtitle: 'working on',
-        rank: '20 mins',
+        icon: IconTrophyFilled,
+        title: 'Offered',
+        subtitle: '',
+        rank: '0',
         bgcolor: 'error'
-    },
-    {
-        icon: MailIcon,
-        title: 'Send envelope to John',
-        subtitle: 'done',
-        rank: '20 mins',
-        bgcolor: 'success'
+    // },
+    // {
+    //     icon: MailIcon,
+    //     title: 'Send envelope to John',
+    //     subtitle: 'done',
+    //     rank: '20 mins',
+    //     bgcolor: 'success'
     }
 ];
 

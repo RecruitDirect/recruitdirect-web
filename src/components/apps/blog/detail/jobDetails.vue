@@ -19,91 +19,132 @@ const post = computed(() => {
 });
 </script>
 <template>
-    <v-row v-if="post">
-        <v-col cols="12">
-            <v-card elevation="10"  rounded="md">
-                <v-img :src="post.coverImg" height="440" cover class="rounded-t-md align-end text-right">
-                    <v-card-item
-                        ><v-chip class="bg-surface text-body-2 font-weight-medium" size="small" v-text="post.view"></v-chip
-                    ></v-card-item>
-                </v-img>
-                <v-avatar size="40" class="mt-n7 mx-6">
-                    <img :src="post.author?.avatar" alt="icon" height="40" />
+    <v-card elevation="10" rounded="md" class="px-4 pb-6">
+        <v-card-item class="pt-4">
+            <div class="d-flex" style="align-items: center;">
+                <v-avatar rounded="lg" class=" my-4" size="100" cla>
+                    <img :src="post.author?.avatar" alt="icon" height="100" />
                 </v-avatar>
-                <v-card-item class="pt-4">
-                    <v-chip class="text-body-2 font-weight-medium bg-grey100" size="small" v-text="post.category"></v-chip>
-                    <h1 class="text-h1 font-weight-medium my-6">{{ post.title }}</h1>
+                <v-col cols="8">
+                    <div class="text-h3 font-weight-medium ml-4">Senior Data Scientist</div>
+                    <div class="d-flex align-center justify-space-between">
+                        <div class="d-flex align-center start">
+                            <div>
+                            <v-avatar class="ml-2" size="22">
+                                <v-icon size="22">mdi-map-marker</v-icon>
+                            </v-avatar>
+                            <span class="text-body-2 ml-2" v-text="'Seattle'"></span>
+                            </div>
+                            <div>
+                            <v-avatar class="ml-4" size="22">
+                                <v-icon size="22">mdi-briefcase</v-icon>
+                            </v-avatar>
+                            <span class="text-body-2 ml-2" v-text="'Full-time'"></span>
+                            </div>
+                            <div>
+                            <v-avatar class="ml-4" size="22">
+                                <v-icon size="22">mdi-train-car</v-icon>
+                            </v-avatar>
+                            <span class="text-body-2 ml-2" v-text="'Remote'"></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="d-flex align-center justify-space-between">
                         <div>
-                            <v-avatar class="" size="18">
-                                <EyeIcon size="18" />
+                            <v-avatar class="ml-2" size="22">
+                                <v-icon size="22">mdi-cash-multiple</v-icon>
                             </v-avatar>
-                            <span class="text-subtitle-1 ml-2" v-text="post.view"></span>
-                            <v-avatar class="ml-4" size="18">
-                                <Message2Icon size="18" />
-                            </v-avatar>
-                            <span class="text-subtitle-1 ml-2" v-text="post.comments?.length"></span>
+                            <span class="text-body-2 ml-2" v-text="'$120,000 - $190,000'"></span>
                         </div>
-                        <div v-if="post.createdAt">
-                            <v-avatar size="10">
-                                <CircleIcon size="10" />
-                            </v-avatar>
-                            <span class="text-subtitle-2 ml-2" v-text="format(new Date(post.createdAt), 'E, MMM d')"></span>
+                        <div class="my-1">
+                            <span class="text-body-2 font-weight-medium" v-text="'Expire at: '"></span>
+                            <span class="text-body-2 ml-2" v-text="'Apr 12, 2024'"></span>
                         </div>
                     </div>
-                </v-card-item>
-                <v-divider></v-divider>
-                <div class="pa-6">
-                    <h2 class="text-h2">Title of the paragraph</h2>
-                    <p class="my-4 text-body-1 text-10">
-                        But you cannot figure out what it is or what it can do. MTA web directory is the simplest way in which one can bid
-                        on a link, or a few links if they wish to do so. The link directory on MTA displays all of the links it currently
-                        has, and does so in alphabetical order, which makes it much easier for someone to find what they are looking for if
-                        it is something specific and they do not want to go through all the other sites and links as well. It allows you to
-                        start your bid at the bottom and slowly work your way to the top of the list.
-                    </p>
-                    <p class="my-4 text-body-1 text-10">
-                        Gigure out what it is or what it can do. MTA web directory is the simplest way in which one can bid on a link, or a
-                        few links if they wish to do so. The link directory on MTA displays all of the links it currently has, and does so
-                        in alphabetical order, which makes it much easier for someone to find what they are looking for if it is something
-                        specific and they do not want to go through all the other sites and links as well. It allows you to start your bid
-                        at the bottom and slowly work your way to the top of the
-                    </p>
-                    <p class="text-subtitle-1 font-weight-bold text-10">This is strong text.</p>
-                    <p class="text-subtitle-1 font-italic text-10">This is italic text.</p>
-                    <v-divider class="my-8"></v-divider>
-                    <h3 class="text-h3">Unorder list.</h3>
-                    <ul class="ml-10 mt-3">
-                        <li class="text-body-1">Gigure out what it is or</li>
-                        <li class="text-body-1">The links it currently</li>
-                        <li class="text-body-1">It allows you to start your bid</li>
-                        <li class="text-body-1">Gigure out what it is or</li>
-                        <li class="text-body-1">The links it currently</li>
-                        <li class="text-body-1">It allows you to start your bid</li>
-                    </ul>
-                    <v-divider class="my-8"></v-divider>
-                    <h3 class="text-h3">Order list.</h3>
-                    <ol class="ml-10 mt-3">
-                        <li class="text-body-1">Gigure out what it is or</li>
-                        <li class="text-body-1">The links it currently</li>
-                        <li class="text-body-1">It allows you to start your bid</li>
-                        <li class="text-body-1">Gigure out what it is or</li>
-                        <li class="text-body-1">The links it currently</li>
-                        <li class="text-body-1">It allows you to start your bid</li>
-                    </ol>
-                    <v-divider class="my-8"></v-divider>
-                    <h3 class="text-h3">Quotes</h3>
-                    <div class="d-flex mt-8 font-weight-bold ml-4">
-                        <QuoteIcon class="mt-n2" /> Life is short, Smile while you still have teeth!
-                    </div>
+                </v-col>
+            </div>
+        </v-card-item>
+        <v-card-item class="pt-4">
+            <div class="">
+                <div class="text-h5 mb-2">About the company</div>
+                <div class="my-1">
+                    <span class="text-body-2 font-weight-medium" v-text="'Employees: '"></span>
+                    <span class="text-body-2 ml-2" v-text="post.view"></span>
                 </div>
-            </v-card>
-            <v-card elevation="10" class=" pa-6 mt-6" rounded="md">
-                <h3 class="text-h4 mb-6">Comments <v-chip class="bg-primary" size="small" v-text="post.comments?.length"></v-chip></h3>
-                <template v-for="(comments, i) in post.comments" :key="post.id">
-                    <AddComment :comments="comments" />
-                </template>
-            </v-card>
-        </v-col>
-    </v-row>
+                <div class=" text-body-2 font-weight-regular">
+                    <p>
+                    The internet continues to develop exponentially, and the job hunting for students and junior graduates needs help to collect jobs from a lot of different job websites, tools to improve efficiency of work related to job hunting. Fresherjob is the platform to help those junior friends find more suitable jobs. We’re looking for a skilled web developer to join our team to develop a new generation of platforms to help all the job hunters increase efficiency and opportunities with AI.
+                    </p>
+                </div>
+            </div>
+        </v-card-item>
+        <v-divider></v-divider>
+        <v-card-item class="pt-4">
+            <div class="job-desc-container">
+                <div class="text-h5">About the role</div>
+                <div class="job-desc">
+                    <p>The internet continues to develop exponentially, and the job hunting for students and junior graduates needs help to collect jobs from a lot of different job websites, tools to improve efficiency of work related to job hunting. Fresherjob is the platform to help those junior friends find more suitable jobs. We’re looking for a skilled web developer to join our team to develop a new generation of platforms to help all the job hunters increase efficiency and opportunities with AI.</p><p></p><h5>Role objectives</h5><ul><li><p>Create well-designed and tested code using best practices for web development, including for responsive design and mobile display</p></li><li><p>Create websites and interfaces using standard web development practices, and incorporate data from back-end APIs or databases</p></li><li><p>Develop or validate testing schedules that address all browsers and devices, ensuring web content/features can be accessed on any computer</p></li></ul><h5>Role responsibilities</h5><ul><li><p>Make small edits requested by customers, develop plans for completing larger projects, and suggest solutions to improve existing websites</p></li><li><p>Perform UI design and coding and create reusable objects and wireframes for web pages or back-end API/services</p></li></ul>
+                </div>
+            </div>
+        </v-card-item>
+        <v-card-item class="pt-4">
+            <div class="job-desc-container">
+                <div class="text-h5 my-3">Candidate requirements</div>
+                <div class="job-desc">
+                    <h5>Required skills and qualifications</h5>
+                    <ul>
+                        <li>Be able to work with UX/UI designer to implement the front-end development</li>
+                        <li>Extensive knowledge of web applications, programming languages, and web services — including API, CSS, CSS3, Sass,  cross-browser compatibility, HTML, JavaScript, jQuery, PHP, security principles, responsive development</li>
+                        <li>Proficiency with content management systems, including WordPress, Figma,  SquareSpace, WIX, WooCommerce</li>
+                    </ul>
+                    <h5>Advanced skills and qualifications</h5>
+                    <ul>
+                        <li>Experience on backend website development e.g. API development, nodeJS</li>
+                        <li>Experience with crawling system (and scrapy website content)</li>
+                        <li>Experience with front-end frameworks e.g. Vue.js, react.js</li>
+                        <li>Knowledge of chatGPT</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </v-card-item>
+    </v-card>
+    <!-- <v-card elevation="10" class=" pa-6 mt-6" rounded="md">
+        <h3 class="text-h4 mb-6">Comments <v-chip class="bg-primary" size="small" v-text="post.comments?.length"></v-chip></h3>
+        <template v-for="(comments, i) in post.comments" :key="post.id">
+            <AddComment :comments="comments" />
+        </template>
+    </v-card> -->
 </template>
+
+<style scoped lang="scss">
+
+.job-desc-container {
+    & ul {
+        margin-left: 30px;
+        & li {
+            font-size: 0.75rem !important;
+            font-weight: 400;
+            line-height: 1.25rem;
+            letter-spacing: 0.0178571429em !important;
+            font-family: inherit !important;
+            text-transform: none !important;
+        }
+    }
+    & p {
+        font-size: 0.75rem !important;
+        font-weight: 400;
+        line-height: 1.25rem;
+        letter-spacing: 0.0178571429em !important;
+        font-family: inherit !important;
+        text-transform: none !important;
+    }
+}
+
+.job-desc {
+    & > p {
+        margin-top: 10px;
+        margin-bottom: 10px
+    }
+}
+</style>
