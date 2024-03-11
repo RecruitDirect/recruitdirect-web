@@ -1,51 +1,43 @@
 <script setup lang="ts">
-import AddComment from './addCommnet.vue';
-import { format } from 'date-fns';
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { useBlogStore } from '@/stores/apps/blog';
+import { currencyFormatter } from '../../../../utils/math';
 
-const title = useRoute();
-const getTitle = title.path.split('/').pop();
+const route = useRoute();
+const jobId = route.path.split('/').pop();
 
-onMounted(() => {
-    store.fetchPost(`${getTitle}`);
-    store.fetchPosts();
-});
-const store = useBlogStore();
+const props = defineProps(['jobDetail', 'jobType', 'remoteType']);
+const jobDetail = ref(props.jobDetail);
 
-const post = computed(() => {
-    return store.selectedPost;
-});
 </script>
 <template>
     <v-card elevation="10" rounded="md" class="px-4 pb-6">
         <v-card-item class="pt-4">
             <div class="d-flex" style="align-items: center;">
                 <v-avatar rounded="lg" class=" my-4" size="100" cla>
-                    <img :src="post.author?.avatar" alt="icon" height="100" />
+                    <img :src="jobDetail.company.name" :alt="jobDetail.company.name" height="100" />
                 </v-avatar>
                 <v-col cols="8">
-                    <div class="text-h3 font-weight-medium ml-4">Senior Data Scientist</div>
+                    <div class="text-h3 font-weight-medium ml-4">{{ jobDetail.name }}</div>
                     <div class="d-flex align-center justify-space-between">
                         <div class="d-flex align-center start">
                             <div>
                             <v-avatar class="ml-2" size="22">
                                 <v-icon size="22">mdi-map-marker</v-icon>
                             </v-avatar>
-                            <span class="text-body-2 ml-2" v-text="'Seattle'"></span>
+                            <span class="text-body-2 ml-2" v-text="jobDetail.location"></span>
                             </div>
                             <div>
                             <v-avatar class="ml-4" size="22">
                                 <v-icon size="22">mdi-briefcase</v-icon>
                             </v-avatar>
-                            <span class="text-body-2 ml-2" v-text="'Full-time'"></span>
+                            <span class="text-body-2 ml-2" v-text="jobType.get(jobDetail.jobType)"></span>
                             </div>
                             <div>
                             <v-avatar class="ml-4" size="22">
                                 <v-icon size="22">mdi-train-car</v-icon>
                             </v-avatar>
-                            <span class="text-body-2 ml-2" v-text="'Remote'"></span>
+                            <span class="text-body-2 ml-2" v-text="remoteType.get(jobDetail.remoteType)"></span>
                             </div>
                         </div>
                     </div>
@@ -54,11 +46,11 @@ const post = computed(() => {
                             <v-avatar class="ml-2" size="22">
                                 <v-icon size="22">mdi-cash-multiple</v-icon>
                             </v-avatar>
-                            <span class="text-body-2 ml-2" v-text="'$120,000 - $190,000'"></span>
+                            <span class="text-body-2 ml-2" v-text="currencyFormatter.format(jobDetail.bottomSalary) + ' - ' + currencyFormatter.format(jobDetail.topSalary)"></span>
                         </div>
                         <div class="my-1">
                             <span class="text-body-2 font-weight-medium" v-text="'Expire at: '"></span>
-                            <span class="text-body-2 ml-2" v-text="'Apr 12, 2024'"></span>
+                            <span class="text-body-2 ml-2" v-text="jobDetail.expirationTime"></span>
                         </div>
                     </div>
                 </v-col>
@@ -66,10 +58,12 @@ const post = computed(() => {
         </v-card-item>
         <v-card-item class="pt-4">
             <div class="">
-                <div class="text-h5 mb-2">About the company</div>
+                <div class="text-h5 mb-2">About the {{ jobDetail.company.name }}</div>
                 <div class="my-1">
                     <span class="text-body-2 font-weight-medium" v-text="'Employees: '"></span>
-                    <span class="text-body-2 ml-2" v-text="post.view"></span>
+                    <span class="text-body-2 ml-2" v-text="jobDetail.company.size"></span>
+                    <span class="text-body-2 font-weight-medium ml-4" v-text="'website: '"></span>
+                    <a class="text-decoration-underline text-body-2 font-weight-medium" :href="jobDetail.company.url">{{ jobDetail.company.url }}</a>
                 </div>
                 <div class=" text-body-2 font-weight-regular">
                     <p>
@@ -83,7 +77,7 @@ const post = computed(() => {
             <div class="job-desc-container">
                 <div class="text-h5">About the role</div>
                 <div class="job-desc">
-                    <p>The internet continues to develop exponentially, and the job hunting for students and junior graduates needs help to collect jobs from a lot of different job websites, tools to improve efficiency of work related to job hunting. Fresherjob is the platform to help those junior friends find more suitable jobs. We’re looking for a skilled web developer to join our team to develop a new generation of platforms to help all the job hunters increase efficiency and opportunities with AI.</p><p></p><h5>Role objectives</h5><ul><li><p>Create well-designed and tested code using best practices for web development, including for responsive design and mobile display</p></li><li><p>Create websites and interfaces using standard web development practices, and incorporate data from back-end APIs or databases</p></li><li><p>Develop or validate testing schedules that address all browsers and devices, ensuring web content/features can be accessed on any computer</p></li></ul><h5>Role responsibilities</h5><ul><li><p>Make small edits requested by customers, develop plans for completing larger projects, and suggest solutions to improve existing websites</p></li><li><p>Perform UI design and coding and create reusable objects and wireframes for web pages or back-end API/services</p></li></ul>
+                    <div v-html="jobDetail.description"></div>
                 </div>
             </div>
         </v-card-item>

@@ -11,26 +11,33 @@ const jobsStore = useJobsStore()
 const route = useRoute()
 
 const jobId = ref(route.params.jobId)
-console.log(jobId.value)
-if (jobsStore.currentJob == null || jobsStore.currentJob == undefined) {
-    jobsStore.fetchJob(jobId).then(res => {
-        loading.value = false;
-    });
-}
+
+onMounted(() => {
+    console.log(jobsStore.currentJob);
+    if (jobsStore.currentJob == null || jobsStore.currentJob == undefined) {
+        jobsStore.fetchJob(jobId.value).then(res => {
+            loading.value = false;
+            console.log(jobsStore.currentJob);
+        });
+    }
+});
 
 </script>
 
-<template v-if="loading == false">
+<template>
     <!-- ---------------------------------------------------- -->
     <!-- Table Basic -->
     <!-- ---------------------------------------------------- -->
-    <v-row>
+    <v-row v-if="!loading.value && jobsStore.currentJob">
         <v-col cols="9">
-          <JobDetail :jobDetail="jobsStore.currentJob"/>
-          <div>{{ $route.params.jobId }}</div>
+          <JobDetail 
+                :jobDetail="jobsStore.currentJob"
+                :jobType="jobsStore.jobType"
+                :remoteType="jobsStore.remoteType"
+            />
         </v-col>
         <v-col cols="3">
-            <JobSideCard></JobSideCard>
+            <JobSideCard />
         </v-col>
     </v-row>
 </template>
