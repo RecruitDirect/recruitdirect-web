@@ -63,6 +63,9 @@ export const useJobsStore = defineStore({
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        setCurrentJob(job: Object) {
+            this.currentJob = job;
         }
     }
 });

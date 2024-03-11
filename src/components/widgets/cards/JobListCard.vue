@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { currencyFormatter } from '../../../utils/math';
+import { useJobsStore } from "@/stores/jobList";
 
 const props = defineProps(['job', 'jobType', 'remoteType']);
 const job = ref(props.job);
 const jobType = ref(props.jobType);
 const remoteType = ref(props.remoteType);
+const jobStore = useJobsStore();
+
+function setCurrentJob() {
+  jobStore.setCurrentJob(job);
+}
 
 </script>
 
@@ -30,7 +36,13 @@ const remoteType = ref(props.remoteType);
           </v-col>
           <v-col cols="10" sm="10">
               <div class="text-h6 text-12 my-4 mx-2">
-                <a class="text-decoration-underline color-inherits" :href="job.url">{{ job.name }}</a>
+                <v-btn :to="'/recruiter/job/detail/' + job.id" 
+                        class="text-subtitle-1 text-decoration-underline font-weight-medium px-0" 
+                        color="black" 
+                        variant="text"
+                        @click="setCurrentJob()">
+                        {{ job.name }}
+                </v-btn>
               </div>
               <v-card-item class="pt-0 px-0 py-0">
                     <div class="d-flex align-center justify-space-between">

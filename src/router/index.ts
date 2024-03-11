@@ -21,7 +21,7 @@ export const router = createRouter({
             component: () => import('@/layouts/full/FullLayout.vue'),
             children: [{
                 path: '/job/details/:jobId', 
-                component: () => import('@/views/apps/blog/JobDetailPage.vue')
+                component: () => import('@/views/apps/blog/JobDetailPageExternal.vue')
             }]
         }
     ]

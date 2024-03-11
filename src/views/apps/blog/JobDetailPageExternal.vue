@@ -28,17 +28,16 @@ onMounted(() => {
     <!-- ---------------------------------------------------- -->
     <!-- Table Basic -->
     <!-- ---------------------------------------------------- -->
-    <v-row v-if="!loading.value && jobsStore.currentJob">
+    <v-row>
         <v-col cols="9">
           <JobDetail 
                 :jobDetail="jobsStore.currentJob"
                 :jobType="jobsStore.jobType"
                 :remoteType="jobsStore.remoteType"
             />
-          <div>{{ $route.params.jobId }}</div>
         </v-col>
         <v-col cols="3">
-            <JobSideCard></JobSideCard>
+            <JobSideCard />
         </v-col>
     </v-row>
 </template>

@@ -30,7 +30,6 @@ const searchJobs = (searchValue: String, jobTypes: Array<String>, remoteTypes: A
     loading.value = true;
     jobsStore.searchJobs(searchValue, jobTypes, remoteTypes, companies).then(res => {
         loading.value = false;
-
     })
     .catch(error => {
         console.log(error);
