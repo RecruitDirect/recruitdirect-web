@@ -17,7 +17,8 @@ export const useJobsStore = defineStore({
         remoteType: new Map<string, string>([
             ['ON_SITE', 'On-site'], 
             ['HYBRID', 'Hybrid'], 
-            ['REMOTE', 'Remote']])
+            ['REMOTE', 'Remote']]),
+        currentJob: null
     }),
     actions: {
         async loadJobs() {
@@ -25,6 +26,16 @@ export const useJobsStore = defineStore({
                 .then((res => {
                     this.jobs = res.data;
                     console.log(this.jobs.length);
+                }))
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        async fetchJob(jobId: String) {
+            return await axios.get('http://localhost:5001/job/info?jobId=' + jobId)
+                .then((res => {
+                    this.currentJob = res.data;
+                    console.log(this.currentJob);
                 }))
                 .catch((error) => {
                     console.log(error);

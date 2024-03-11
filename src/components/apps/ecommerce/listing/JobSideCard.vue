@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { useEcomStore } from '@/stores/apps/eCommerce';
-import {upcommingCards} from '@/_mockApis/components/widget/card';
 import { IconBusinessplan, IconFileCv, IconStereoGlasses, IconTrophyFilled } from '@tabler/icons-vue';
-
-const panel = ref([0, 1, 2, 3, 4]);
 
 const candidateStatus: any[] = [
     {
@@ -45,39 +42,9 @@ const store = useEcomStore();
 //Reset Filter
 store.filterReset();
 
-const selectedGender = ref('');
-store.SelectGender(selectedGender);
-
-const selectedCategory = ref('all');
-store.SelectCategory(selectedCategory);
-
-const selectPrice = ref('');
-store.SelectPrice(selectPrice);
-
-const selectRating = ref(1);
-
 onMounted(() => {
     store.fetchProducts();
 });
-
-const getProducts = computed(() => {
-    return store.products;
-});
-const getUniqueData = (data: any, attr: any) => {
-    let newVal = data.map((curElem: any) => {
-        return curElem[attr];
-    });
-    if (attr === 'colors') {
-        newVal = newVal.flat();
-    }
-
-    return (newVal = [...Array.from(new Set(newVal))]);
-};
-
-const filterbyColors: any = computed(() => {
-    return getUniqueData(getProducts.value, 'colors');
-});
-
 
 //Reset Filter Function
 function filterReset() {
@@ -91,7 +58,7 @@ function filterReset() {
 <template>
     <v-sheet class="pa-4 pt-4">
         
-        <v-card-title class="text-title-1">Recruiting center</v-card-title>
+        <div class="pa-2 text-h6">Recruiting center</div>
 
         <div class="my-2 mx-1">
             <div class="d-flex align-center" v-for="list in candidateStatus" :key="list.title">
