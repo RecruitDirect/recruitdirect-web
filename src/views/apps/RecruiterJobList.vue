@@ -52,7 +52,7 @@ const searchJobs = (searchValue: String, jobTypes: Array<String>, remoteTypes: A
             />
         </v-col>
         <v-col cols="8" md="8" sm="8">
-            <JobListCard v-for="job in jobsStore.jobs" :key="job.id"
+            <JobListCard v-for="job in jobsStore.jobs" :key="job.first.id"
                     :job="job"
                     :jobType="jobsStore.jobType"
                     :remoteType="jobsStore.remoteType"

@@ -7,7 +7,7 @@ const route = useRoute();
 const jobId = route.path.split('/').pop();
 
 const props = defineProps(['jobDetail', 'jobType', 'remoteType']);
-const jobDetail = ref(props.jobDetail);
+const jobDetail = ref(props.jobDetail.first);
 
 </script>
 <template>

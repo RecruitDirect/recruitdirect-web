@@ -1,29 +1,52 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
-import { useEcomStore } from '@/stores/apps/eCommerce';
 import { IconBusinessplan, IconFileCv, IconStereoGlasses, IconTrophyFilled } from '@tabler/icons-vue';
+
+import { currencyFormatter } from '../../../../utils/math';
+
+const props = defineProps(['jobDetail']);
+const jobDetail = ref(props.jobDetail);
+
+const resumeReviewCnt = computed(() => {
+    return jobDetail.value.second.filter((item: any) => {
+        return item.candidate.status == 'WAITING'
+    }).reduce((p: number, r: any) => p + 1, 0);
+})
+
+const interviewingCnt = computed(() => {
+    return jobDetail.value.second.filter((item: any) => {
+        return item.candidate.status == 'INTERVIEWING'
+    }).reduce((p: number, r: any) => p + 1, 0);
+})
+
+const offerCnt = computed(() => {
+    return jobDetail.value.second.filter((item: any) => {
+        return item.candidate.status == 'OFFERED'
+    }).reduce((p: number, r: any) => p + 1, 0);
+})
+
 
 const candidateStatus: any[] = [
     {
         icon: IconFileCv,
         title: 'Resume review',
         subtitle: '',
-        rank: '10',
-        bgcolor: 'secondary'
+        rank: resumeReviewCnt,
+        bgcolor: 'warning'
     },
     {
         icon: IconStereoGlasses,
         title: 'Interviewing',
         subtitle: '',
-        rank: '2',
-        bgcolor: 'warning'
+        rank: interviewingCnt,
+        bgcolor: 'info'
     },
     {
         icon: IconTrophyFilled,
         title: 'Offered',
         subtitle: '',
-        rank: '0',
-        bgcolor: 'error'
+        rank: offerCnt,
+        bgcolor: 'success'
     }
 ];
 
@@ -37,21 +60,12 @@ const bonusList: any[] = [
     }
 ];
 
-const store = useEcomStore();
+function startRecruiting() {
 
-//Reset Filter
-store.filterReset();
+}
 
-onMounted(() => {
-    store.fetchProducts();
-});
+function launchAI() {
 
-//Reset Filter Function
-function filterReset() {
-    store.SelectGender('');
-    store.SelectCategory('all');
-    store.SelectPrice('');
-    store.sortByColor('All');
 }
 
 </script>
@@ -80,13 +94,13 @@ function filterReset() {
                 </v-avatar>
                 <div class="pl-4 mt-n1">
                     <div class="text-body-2 font-weight-medium" v-text="list.title"></div>
-                    <div class="ml-auto font-weight-medium text-body-2 text-medium-emphasis" v-text="'$ 12,000'"></div>
+                    <div class="ml-auto font-weight-medium text-body-2 text-medium-emphasis" v-text="currencyFormatter.format(jobDetail.first.totalBonus)"></div>
                 </div>
             </div>
         </div>
         <v-divider :thickness="1" class="border-opacity-75" color="black"></v-divider>
         <v-card-item class="text-center py-0">
-            <v-btn color="primary" @click="filterReset()"  block class="mt-5" >Start recruiting</v-btn>
+            <v-btn color="primary" @click="startRecruiting()"  block class="mt-5" >Start recruiting</v-btn>
         </v-card-item>
         <v-card-item class="text-center pt-0">
             <img src="@/assets/images/backgrounds/maintenance.svg" width="200" alt="image" />
@@ -94,7 +108,7 @@ function filterReset() {
             <h6 class="text-subtitle-1 text-13 my-4 textSecondary">
                 Trying our AI assistant for questions, advices, and actions
             </h6>
-            <v-btn block class="btn-grad">Try it!</v-btn>
+            <v-btn block class="btn-grad" @click="launchAI()">Try it!</v-btn>
         </v-card-item>
     </v-sheet>
 </template>

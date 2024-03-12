@@ -7,18 +7,21 @@ import { useJobsStore } from '@/stores/jobList'
 import { useRoute } from 'vue-router';
 
 const loading = ref(true)
+const candidateLoading = ref(true)
 const jobsStore = useJobsStore()
 const route = useRoute()
 
 const jobId = ref(route.params.jobId)
 
 onMounted(() => {
-    console.log(jobsStore.currentJob);
     if (jobsStore.currentJob == null || jobsStore.currentJob == undefined) {
         jobsStore.fetchJob(jobId.value).then(res => {
             loading.value = false;
-            console.log(jobsStore.currentJob);
         });
+
+        // jobsStore.getCandidatesGroup(jobId.value).then(res => {
+        //     candidateLoading.value = false;
+        // });
     }
 });
 
@@ -28,17 +31,16 @@ onMounted(() => {
     <!-- ---------------------------------------------------- -->
     <!-- Table Basic -->
     <!-- ---------------------------------------------------- -->
-    <v-row v-if="!loading.value && jobsStore.currentJob">
+    <v-row v-if="!loading.value && !candidateLoading.value && jobsStore.currentJob">
         <v-col cols="9">
           <JobDetail 
                 :jobDetail="jobsStore.currentJob"
                 :jobType="jobsStore.jobType"
                 :remoteType="jobsStore.remoteType"
             />
-          <div>{{ $route.params.jobId }}</div>
         </v-col>
         <v-col cols="3">
-            <JobSideCard></JobSideCard>
+            <JobSideCard :jobDetail="jobsStore.currentJob"/>
         </v-col>
     </v-row>
 </template>

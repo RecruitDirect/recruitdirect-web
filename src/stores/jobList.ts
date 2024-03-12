@@ -18,7 +18,7 @@ export const useJobsStore = defineStore({
             ['ON_SITE', 'On-site'], 
             ['HYBRID', 'Hybrid'], 
             ['REMOTE', 'Remote']]),
-        currentJob: null
+        currentJob: undefined
     }),
     actions: {
         async loadJobs() {
@@ -32,7 +32,7 @@ export const useJobsStore = defineStore({
                 });
         },
         async fetchJob(jobId: String) {
-            return await axios.get('http://localhost:5001/job/info?jobId=' + jobId)
+            return await axios.get('http://localhost:5001/job/details?jobId=' + jobId)
                 .then((res => {
                     this.currentJob = res.data;
                     console.log(this.currentJob);
@@ -64,7 +64,17 @@ export const useJobsStore = defineStore({
                     console.log(error);
                 });
         },
-        setCurrentJob(job: Object) {
+        // async getCandidatesGroup(jobId: String) {
+        //     return await axios.get('http://localhost:5001/submission/list/byjobid?jobId=' + jobId)
+        //         .then((res => {
+        //             this.candidateGroup.resumeReview = res.data;
+        //             console.log(this.currentJob);
+        //         }))
+        //         .catch((error) => {
+        //             console.log(error);
+        //         });
+        // },
+        setCurrentJob(job: any) {
             this.currentJob = job;
         }
     }
