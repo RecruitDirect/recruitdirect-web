@@ -55,7 +55,8 @@ import {
   IconServer,
   IconJumpRope,
   IconLayoutKanban,
-  IconWorldSearch
+  IconWorldSearch,
+  IconBuildingBroadcastTower
 } from '@tabler/icons-vue';
 
 export interface menu {
@@ -163,6 +164,11 @@ const sidebarItem: menu[] = [
     title: 'JobList',
     icon: IconWorldSearch,
     to: '/recruiter/joblist'
+  },
+  {
+    title: 'PostedJobList',
+    icon: IconBuildingBroadcastTower,
+    to: '/hiringclient/joblist'
   },
   {
     title: 'Chats',

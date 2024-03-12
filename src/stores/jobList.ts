@@ -26,6 +26,7 @@ export const useJobsStore = defineStore({
                 .then((res => {
                     this.jobs = res.data;
                     console.log(this.jobs.length);
+                    return res.data;
                 }))
                 .catch((error) => {
                     console.log(error);

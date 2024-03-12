@@ -21,6 +21,11 @@ const MainRoutes = {
             component: () => import('@/views/apps/RecruiterJobList.vue'),
         },
         {
+            name: 'postedjoblist',
+            path: '/hiringclient/joblist',
+            component: () => import('@/views/apps/HiringClientJobList.vue'),
+        },
+        {
             name: 'jobDetail',
             path: '/recruiter/job/detail/:jobId', 
             component: () => import('@/views/apps/blog/JobDetailPage.vue')

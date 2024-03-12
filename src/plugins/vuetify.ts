@@ -1,9 +1,8 @@
 import { createVuetify } from 'vuetify';
 import '@mdi/font/css/materialdesignicons.css';
-import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 //Data tables
-import { VDataTable } from 'vuetify/labs/VDataTable';
+import { VDataTable } from 'vuetify/components/VDataTable';
 
 //DragScroll
 import { VueDraggableNext } from 'vue-draggable-next'
