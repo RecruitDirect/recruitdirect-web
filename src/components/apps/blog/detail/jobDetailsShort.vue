@@ -5,7 +5,7 @@ import { currencyFormatter } from '../../../../utils/math';
 
 const route = useRoute();
 const jobId = route.path.split('/').pop();
-
+const panel = ref([1]);
 const props = defineProps(['jobDetail', 'jobType', 'remoteType']);
 
 </script>
@@ -13,28 +13,25 @@ const props = defineProps(['jobDetail', 'jobType', 'remoteType']);
     <v-card elevation="10" rounded="md" class="px-4 pb-6">
         <v-card-item class="pt-4">
             <div class="d-flex" style="align-items: center;">
-                <v-avatar rounded="lg" class=" my-4" size="100" cla>
-                    <img :src="props.jobDetail.first.company.name" :alt="props.jobDetail.first.company.name" height="100" />
-                </v-avatar>
-                <v-col cols="8">
-                    <div class="text-h3 font-weight-medium ml-4">{{ props.jobDetail.first.name }}</div>
+                <v-col cols="9">
+                    <div class="text-h3 font-weight-medium">{{ props.jobDetail.first.name }}</div>
                     <div class="d-flex align-center justify-space-between">
                         <div class="d-flex align-center start">
                             <div>
-                            <v-avatar class="ml-2" size="22">
-                                <v-icon size="22">mdi-map-marker</v-icon>
+                            <v-avatar class="ml-0" size="18">
+                                <v-icon size="18">mdi-map-marker</v-icon>
                             </v-avatar>
                             <span class="text-body-2 ml-2" v-text="props.jobDetail.first.location"></span>
                             </div>
                             <div>
-                            <v-avatar class="ml-4" size="22">
-                                <v-icon size="22">mdi-briefcase</v-icon>
+                            <v-avatar class="ml-4" size="18">
+                                <v-icon size="18">mdi-briefcase</v-icon>
                             </v-avatar>
                             <span class="text-body-2 ml-2" v-text="jobType.get(props.jobDetail.first.jobType)"></span>
                             </div>
                             <div>
-                            <v-avatar class="ml-4" size="22">
-                                <v-icon size="22">mdi-train-car</v-icon>
+                            <v-avatar class="ml-4" size="18">
+                                <v-icon size="18">mdi-train-car</v-icon>
                             </v-avatar>
                             <span class="text-body-2 ml-2" v-text="remoteType.get(props.jobDetail.first.remoteType)"></span>
                             </div>
@@ -42,8 +39,8 @@ const props = defineProps(['jobDetail', 'jobType', 'remoteType']);
                     </div>
                     <div class="d-flex align-center justify-space-between">
                         <div>
-                            <v-avatar class="ml-2" size="22">
-                                <v-icon size="22">mdi-cash-multiple</v-icon>
+                            <v-avatar class="ml-0" size="18">
+                                <v-icon size="18">mdi-cash-multiple</v-icon>
                             </v-avatar>
                             <span class="text-body-2 ml-2" v-text="currencyFormatter.format(props.jobDetail.first.bottomSalary) + ' - ' + currencyFormatter.format(props.jobDetail.first.topSalary)"></span>
                         </div>
@@ -55,33 +52,26 @@ const props = defineProps(['jobDetail', 'jobType', 'remoteType']);
                 </v-col>
             </div>
         </v-card-item>
-        <v-card-item class="pt-4">
-            <div class="">
-                <div class="text-h5 mb-2">About the {{ props.jobDetail.first.company.name }}</div>
-                <div class="my-1">
-                    <span class="text-body-2 font-weight-medium" v-text="'Employees: '"></span>
-                    <span class="text-body-2 ml-2" v-text="props.jobDetail.first.company.size"></span>
-                    <span class="text-body-2 font-weight-medium ml-4" v-text="'website: '"></span>
-                    <a class="text-decoration-underline text-body-2 font-weight-medium" :href="props.jobDetail.first.company.url">{{ props.jobDetail.first.company.url }}</a>
-                </div>
-                <div class=" text-body-2 font-weight-regular">
-                    <p>
-                    The internet continues to develop exponentially, and the job hunting for students and junior graduates needs help to collect jobs from a lot of different job websites, tools to improve efficiency of work related to job hunting. Fresherjob is the platform to help those junior friends find more suitable jobs. We’re looking for a skilled web developer to join our team to develop a new generation of platforms to help all the job hunters increase efficiency and opportunities with AI.
-                    </p>
-                </div>
-            </div>
-        </v-card-item>
         <v-divider></v-divider>
-        <v-card-item class="pt-4">
+        <v-expansion-panels v-model="panel">
+            <v-expansion-panel elevation="0" variant="accordion">
+                <v-expansion-panel-title class="font-weight-medium custom-accordion d-flex align-center"> Job requirements : 
+                    <template v-slot:actions="{ expanded }" class="align-center">
+                        <v-btn @click.stop="" color="primary" prepend-icon="mdi-square-edit-outline"> Edit job </v-btn>
+                        <v-icon class="ma-auto"
+                        :icon="expanded ? 'mdi-unfold-less-horizontal' : 'mdi-unfold-more-horizontal'"
+                        ></v-icon>
+                    </template>
+                    
+                </v-expansion-panel-title>
+                <v-expansion-panel-text class="acco-body">
+                    <v-card-item class="pt-4">
+
             <div class="job-desc-container">
                 <div class="text-h5">About the role</div>
                 <div class="job-desc">
                     <div v-html="props.jobDetail.first.description"></div>
                 </div>
-            </div>
-        </v-card-item>
-        <v-card-item class="pt-4">
-            <div class="job-desc-container">
                 <div class="text-h5 my-3">Candidate requirements</div>
                 <div class="job-desc">
                     <h5>Required skills and qualifications</h5>
@@ -101,6 +91,11 @@ const props = defineProps(['jobDetail', 'jobType', 'remoteType']);
                 
             </div>
         </v-card-item>
+                </v-expansion-panel-text>
+            </v-expansion-panel>
+        </v-expansion-panels>
+        
+        
     </v-card>
     <!-- <v-card elevation="10" class=" pa-6 mt-6" rounded="md">
         <h3 class="text-h4 mb-6">Comments <v-chip class="bg-primary" size="small" v-text="post.comments?.length"></v-chip></h3>

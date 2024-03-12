@@ -19,39 +19,27 @@ function setCurrentJob() {
   <!-- ----------------------------------------------------------------------------- -->
   <!-- job Card -->
   <!-- ----------------------------------------------------------------------------- -->
-  <v-card elevation="11" rounded="md" class="px-4 mb-6">
-      <v-row class="mt-md-0 mt-sm-3 mt-3 pl-2">
-          <v-col cols="2" sm="2" class="d-flex py-0 px-0 align-start justify-center flex-wrap">
-              <v-card-item>
-                <v-avatar rounded="lg" class="mx-2" size="100" cla>
-                    <img :src="job.first.coveravatar" :alt="job.first.avatar" class="h-100 w-100"/>
-                </v-avatar>
-                <div class="text-subtitle-2 mt-2 text-center font-weight-medium">
-                  <a :href="job.first.company.url">{{ job.first.company.name }}</a>
+  <v-card elevation="20" rounded="md" class="my-4" cols="6">
+          <v-col>
+              <div class="text-h6 text-12 my-4 mx-2 d-flex align-center justify-space-between">
+                <div 
+                        class="text-subtitle-1 font-weight-medium px-0" 
+                        color="black">
+                        Jian Hou
                 </div>
-                <div class="text-center">
-                  <span class="text-body-2 text-medium-emphasis" v-text="job.first.company.size + ' employees'"></span>
-                </div>
-              </v-card-item>
-          </v-col>
-          <v-col cols="10" sm="10">
-              <div class="text-h6 text-12 my-4 mx-2">
-                <v-btn :to="'/recruiter/job/detail/' + job.first.id" 
-                        class="text-subtitle-1 text-decoration-underline font-weight-medium px-0" 
-                        color="black" 
-                        variant="text"
-                        @click="setCurrentJob()">
-                        {{ job.first.name }}
-                </v-btn>
+                  <div class="d-flex my-2 align-center">
+                    <span class="text-subtitle-1 text-decoration-underline">email: </span>
+                    <span class="text-subtitle-2 ml-2" v-text="'asdfasdf@gmail.com'"></span>
+                  </div>      
               </div>
               <v-card-item class="pt-0 px-0 py-0">
                     <div class="d-flex align-center justify-space-between">
                       <div class="d-flex align-center start">
                         <div>
                           <v-avatar class="ml-2" size="22">
-                            <v-icon size="22">mdi-map-marker</v-icon>
+                            <v-icon size="22">mdi-message-processing</v-icon>
                           </v-avatar>
-                          <span class="text-body-2 ml-2" v-text="job.first.location"></span>
+                          <span class="text-body-2 ml-2" v-text="'interviewing'"></span>
                         </div>
                         <div>
                           <v-avatar class="ml-4" size="22">
@@ -100,9 +88,8 @@ function setCurrentJob() {
                     </v-col> -->
                   </div>
                 </v-card-item>
-              <!-- <v-btn class="mt-0" :color="'primary'">Go Somewhere</v-btn> -->
+              <v-btn class="mt-0" :color="'primary'">Update candidate info</v-btn>
           </v-col>
           
-      </v-row>
   </v-card>
 </template>

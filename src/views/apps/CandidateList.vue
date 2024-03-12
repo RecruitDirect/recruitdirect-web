@@ -4,6 +4,7 @@ import { useJobsStore } from '@/stores/jobList'
 import { useCompaniesStore } from '@/stores/companies'
 
 import PostedJobListCard from '@/components/widgets/cards/PostedJobListCard.vue';
+import CandidateListCard from '@/components/widgets/cards/CandidateListCard.vue';
 
 const loading = ref(true)
 const isCompanyLoading = ref(true)
@@ -41,13 +42,12 @@ const searchJobs = (searchValue: String, jobTypes: Array<String>, remoteTypes: A
     <!-- -------------------------------------- -->
     <!-- Left Sidebar -->
     <!-- -------------------------------------- -->    
-    <v-row>
-        <v-col cols="6" md="6" sm="6">
-            <PostedJobListCard v-for="job in jobsStore.jobs" :key="job.first.id"
+    <v-sheet elevation="10" rounded="md" class="px-4 pb-6">
+            <v-card-title>Candidates: </v-card-title>
+            <CandidateListCard v-for="job in jobsStore.jobs" :key="job.first.id"
                     :job="job"
                     :jobType="jobsStore.jobType"
                     :remoteType="jobsStore.remoteType"
             />
-        </v-col>
-    </v-row>
+    </v-sheet>
 </template>

@@ -4,6 +4,7 @@ import { useJobsStore } from '@/stores/jobList'
 
 import PostedJobListCard from '@/components/widgets/cards/PostedJobListCard.vue';
 import JobDetailsShort from '@/components/apps/blog/detail/jobDetailsShort.vue';
+import CandidateList from './CandidateList.vue';
 
 const loading = ref(true)
 const jobsStore = useJobsStore()
@@ -28,12 +29,14 @@ const selectJob = (job: object) => {
     <!-- -------------------------------------- -->    
     <v-row v-if="!loading">
         <v-col cols="4" md="4" sm="4">
-            <PostedJobListCard v-for="job in jobsStore.jobs" :key="job.first.id"
-                    :job="job"
-                    :jobType="jobsStore.jobType"
-                    :remoteType="jobsStore.remoteType"
-                    @selectJob="selectJob"
-            />
+            <perfect-scrollbar style="height: 900px;">
+                    <PostedJobListCard v-for="job in jobsStore.jobs" :key="job.first.id"
+                            :job="job"
+                            :jobType="jobsStore.jobType"
+                            :remoteType="jobsStore.remoteType"
+                            @selectJob="selectJob"
+                    />
+            </perfect-scrollbar>
         </v-col>
         <v-col cols="8" md="8" sm="8">
             <JobDetailsShort
@@ -41,6 +44,8 @@ const selectJob = (job: object) => {
                     :jobType="jobsStore.jobType"
                     :remoteType="jobsStore.remoteType"
             />
+            <v-divider class="my-2"/>
+            <CandidateList></CandidateList>
         </v-col>
     </v-row>
 </template>
