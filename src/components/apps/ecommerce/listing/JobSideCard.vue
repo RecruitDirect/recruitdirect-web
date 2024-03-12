@@ -25,7 +25,6 @@ const offerCnt = computed(() => {
     }).reduce((p: number, r: any) => p + 1, 0);
 })
 
-
 const candidateStatus: any[] = [
     {
         icon: IconFileCv,
@@ -54,9 +53,6 @@ const bonusList: any[] = [
     {
         icon: IconBusinessplan,
         title: 'Recruiting bonus',
-        subtitle: '$ 12,000',
-        rank: '',
-        bgcolor: 'secondary'
     }
 ];
 

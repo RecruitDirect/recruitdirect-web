@@ -25,7 +25,7 @@ import LoginForm from '@/components/auth/LoginForm.vue';
                     <div class="text-subtitle-1 mb-6">Your recruiting platform</div>
                     <LoginForm />
                     <h6 class="text-h6  text-medium-emphasis  d-flex align-center mt-6 font-weight-medium">
-                        New to MaterialPro?
+                        New to RecruitDirect?
                         <v-btn class="pl-0 text-primary text-body-1 opacity-1 pl-2 font-weight-medium" height="auto"
                             to="/auth/register" variant="plain">Create an account</v-btn>
                     </h6>
