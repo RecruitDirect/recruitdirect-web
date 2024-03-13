@@ -76,7 +76,7 @@ const submitForm = async () => {
       resumePassBonus: resumePassBonus.value,
       interviewBonus: interviewBonus.value,
       jobCategories: categorySelect.value,
-      location: location,
+      location: location.value,
       skillDescription: skillDescription.value,
       expirationTime: expirationDate.value,
       bottomSalary: bottomSalary.value,
@@ -88,7 +88,7 @@ const submitForm = async () => {
       // Map form fields to corresponding backend parameters
     };
 
-    const response = await fetch('/add', {
+    const response = await fetch('/job/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -111,7 +111,6 @@ const submitForm = async () => {
 
 <template>
   <form @submit.prevent="submitForm">
-    {{ name }}
     <v-row>
         <v-col cols="12" sm="4">
             <v-label class="mb-2 font-weight-medium">Job title</v-label>
