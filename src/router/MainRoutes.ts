@@ -292,6 +292,11 @@ const MainRoutes = {
             component: () => import('@/views/forms/form-elements/VSwitch.vue')
         },
         {
+            name: 'addJob Form',
+            path: '/forms/add-job',
+            component: () => import('@/views/forms/addJob.vue')
+        },
+        {
             name: 'Form Layout',
             path: '/forms/form-layouts',
             component: () => import('@/views/forms/FormLayouts.vue')
