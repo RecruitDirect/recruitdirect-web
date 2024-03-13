@@ -5,6 +5,8 @@ import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
 import UiParentCard from '@/components/shared/UiParentCard.vue';
 import UiChildCard from '@/components/shared/UiChildCard.vue';
 import AddJobForm from '@/components/forms/add-job-form/AddJobForm.vue';
+import { useRecruiterStore } from '@/stores/authUser';
+const usersStore = useRecruiterStore();
 // theme breadcrumb
 const page = ref({ title: 'Form Layouts' });
 const breadcrumbs = ref([
@@ -26,7 +28,7 @@ const breadcrumbs = ref([
    <v-row>
         <v-col cols="12" class="mb-12">
             <UiParentCard title="Add job form">
-                <AddJobForm/>
+                <AddJobForm :userData="usersStore.userData"/>
             </UiParentCard>           
         </v-col>
    </v-row>           

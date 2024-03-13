@@ -13,12 +13,12 @@ import StarterKit from '@tiptap/starter-kit';
 import EditorMenubar from '@/components/forms/plugins/editor/EditorMenubar.vue';
 
 const name = ref('');
-const totalBonus = ref(0);
-const bottomSalary = ref(0);
-const resumePassBonus = ref(0);
-const topSalary = ref(0);
+const totalBonus = ref();
+const bottomSalary = ref();
+const resumePassBonus = ref();
+const topSalary = ref();
 const expirationDate = ref('');
-const interviewBonus = ref(0);
+const interviewBonus = ref();
 const skill = ref('');
 
 
@@ -43,8 +43,6 @@ const selectedStateCities = computed(() => {
 const rules = {
   requiredRule : (val)=> !!val || 'Requried',
   positiveRule: (val)=> val >= 0 || `Input should be a positive number`,
-  topSalaryRule: (val)=> val < bottomSalary || 'Top salary should be no less than bottom',
-  bottomSalaryRule: (val)=> val > topSalary || 'Bottom salary should be no greater than top',
 };
 
 const skillDescription = ref('Type the skills requirement here');
@@ -68,42 +66,36 @@ const editor = useEditor({
 
 const submitForm = async () => {
   try {
-    const formData = {
-      name: name.value,
-      description: description.value,
-      hiringClientId: userId,
-      totalBonus: totalBonus.value,
-      resumePassBonus: resumePassBonus.value,
-      interviewBonus: interviewBonus.value,
-      jobCategories: categorySelect.value,
-      location: location.value,
-      skillDescription: skillDescription.value,
-      expirationTime: expirationDate.value,
-      bottomSalary: bottomSalary.value,
-      topSalary: topSalary.value,
-      jobType: jobTypeSelect.value,
-      remoteType: remoteSelect.value,
-      
+    const formData = new FormData();
+    formData.append('name', name.value);
+    formData.append('description', description.value);
+    formData.append('hiringClientId', userId.value);
+    formData.append('totalBonus', totalBonus.value);
+    formData.append('resumePassBonus', resumePassBonus.value);
+    formData.append('interviewPassBonus', interviewBonus.value);
+    formData.append('jobCategories', categorySelect.value);
+    formData.append('location', location.value);
+    formData.append('skillDescription', skillDescription.value);
+    formData.append('expirationTime', expirationDate.value);
+    formData.append('bottomSalary', bottomSalary.value);
+    formData.append('topSalary', topSalary.value);
+    formData.append('jobType', jobTypeSelect.value);
+    formData.append('remoteType', remoteSelect.value);
 
-      // Map form fields to corresponding backend parameters
-    };
-
-    const response = await fetch('/job/add', {
+    const response = await fetch('http://localhost:5001/job/add', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
+      body: formData
     });
 
     if (!response.ok) {
       throw new Error('Failed to add new job');
     }
 
-    
+    const result = await response.json();
+    console.log(result);
+
   } catch (error) {
     console.error(error);
-    
   }
 };
 
