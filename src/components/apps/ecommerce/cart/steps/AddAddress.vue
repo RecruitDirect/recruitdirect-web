@@ -14,7 +14,7 @@ const rules: any = ref({
 </script>
 
 <template>
-    <v-dialog v-model="dialog" max-width="600">
+    <v-dialog v-model="props.dialog" max-width="600">
         <v-card>
             <v-card-text>
                 <div class="d-flex justify-space-between">
