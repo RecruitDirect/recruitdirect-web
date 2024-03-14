@@ -29,7 +29,7 @@ const selectJob = (job: object) => {
     <!-- -------------------------------------- -->    
     <v-row v-if="!loading">
         <v-col cols="4" md="4" sm="4">
-            <perfect-scrollbar style="height: 900px;">
+            <perfect-scrollbar style="height: 1000px;">
                     <PostedJobListCard v-for="job in jobsStore.jobs" :key="job.first.id"
                             :job="job"
                             :jobType="jobsStore.jobType"

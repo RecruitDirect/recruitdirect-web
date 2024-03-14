@@ -43,11 +43,13 @@ const searchJobs = (searchValue: String, jobTypes: Array<String>, remoteTypes: A
     <!-- Left Sidebar -->
     <!-- -------------------------------------- -->    
     <v-sheet elevation="10" rounded="md" class="px-4 pb-6">
-            <v-card-title>Candidates: </v-card-title>
+        <v-card-title>Candidates: </v-card-title>
+        <div class="d-flex justify-start align-center flex-wrap">
             <CandidateListCard v-for="job in jobsStore.jobs" :key="job.first.id"
                     :job="job"
                     :jobType="jobsStore.jobType"
                     :remoteType="jobsStore.remoteType"
             />
+        </div>
     </v-sheet>
 </template>
