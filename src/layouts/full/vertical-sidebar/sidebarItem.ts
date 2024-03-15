@@ -381,6 +381,11 @@ const sidebarItem: menu[] = [
     ]
   },
   {
+    title: 'AddJob Form',
+    icon: IconFileText,
+    to: '/forms/add-job'
+  },
+  {
     title: 'Form Layout',
     icon: IconFileText,
     to: '/forms/form-layouts'
