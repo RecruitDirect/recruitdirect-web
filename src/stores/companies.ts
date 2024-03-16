@@ -20,39 +20,16 @@ export const useCompaniesStore = defineStore({
     }),
     actions: {
         async loadCompanies() {
-            this.companies = [{
-                    id: 1,
-                    name: "Self",
-                    url: "test.com",
-                    size: 1,
-                    location: "Remote"
-                },
-                {
-                    id: 2,
-                    name: "Infox",
-                    url: "test.com",
-                    size: 34,
-                    location: "Seattle"
-                },
-                {
-                    id: 3,
-                    name: "TestCom",
-                    url: "test.com",
-                    size: 12,
-                    location: "Vancouver"
-                }
-            ];
-            localStorage.setItem('companies', JSON.stringify(this.companies));
-            return Promise.resolve(this.companies);
-            // return await axios.get('http://localhost:5001/recruiter/info/email?email=' + this.userEmail)
-            //     .then((res => {
-            //         this.userData = res.data;
-            //         localStorage.setItem('companies', JSON.stringify(this.companies));
-            //         console.log(this.userData);
-            //     }))
-            //     .catch((error) => {
-            //         console.log(error);
-            //     });
+            
+            await axios.get('http://localhost:5001/company/getAll')
+                .then((res => {
+                    this.companies = res.data;
+                    localStorage.setItem('companies', JSON.stringify(this.companies));
+                    console.log(this.companies);
+                }))
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }
 });
