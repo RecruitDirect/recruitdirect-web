@@ -47,6 +47,7 @@ export const useCompaniesStore = defineStore({
             // return await axios.get('http://localhost:5001/recruiter/info/email?email=' + this.userEmail)
             //     .then((res => {
             //         this.userData = res.data;
+            //         localStorage.setItem('companies', JSON.stringify(this.companies));
             //         console.log(this.userData);
             //     }))
             //     .catch((error) => {

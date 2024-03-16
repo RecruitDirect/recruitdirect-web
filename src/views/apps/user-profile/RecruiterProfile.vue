@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRecruiterStore } from '@/stores/authUser';
+import { useUsersStore } from '@/stores/authUser';
 
 // components
 import ProfileBannerUser from '@/components/apps/user-profile/ProfileBannerUser.vue';
@@ -11,7 +11,7 @@ import { useCompaniesStore } from '@/stores/companies';
 const page = ref({ title: 'Recruiter Profile' });
 const isUserLoading = ref(true);
 const isCompanyLoading = ref(true);
-const usersStore = useRecruiterStore();
+const usersStore = useUsersStore();
 const companiesStore = useCompaniesStore();
 
 if (usersStore.userData == null || usersStore.userData == undefined) {

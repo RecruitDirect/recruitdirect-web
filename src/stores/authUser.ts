@@ -4,7 +4,7 @@ import { userAuthStore } from './auth';
 
 const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
 
-export const useRecruiterStore = defineStore({
+export const useUsersStore = defineStore({
     id: 'userData',
     state: () => ({
         // initialize state from local storage to enable user to stay logged in

@@ -85,21 +85,8 @@ const jobDetail = ref(props.jobDetail.first);
             <div class="job-desc-container">
                 <div class="text-h5 my-3">Candidate requirements</div>
                 <div class="job-desc">
-                    <h5>Required skills and qualifications</h5>
-                    <ul>
-                        <li>Be able to work with UX/UI designer to implement the front-end development</li>
-                        <li>Extensive knowledge of web applications, programming languages, and web services — including API, CSS, CSS3, Sass,  cross-browser compatibility, HTML, JavaScript, jQuery, PHP, security principles, responsive development</li>
-                        <li>Proficiency with content management systems, including WordPress, Figma,  SquareSpace, WIX, WooCommerce</li>
-                    </ul>
-                    <h5>Advanced skills and qualifications</h5>
-                    <ul>
-                        <li>Experience on backend website development e.g. API development, nodeJS</li>
-                        <li>Experience with crawling system (and scrapy website content)</li>
-                        <li>Experience with front-end frameworks e.g. Vue.js, react.js</li>
-                        <li>Knowledge of chatGPT</li>
-                    </ul>
+                    <div v-html="jobDetail.skillDescription"></div>
                 </div>
-                
             </div>
         </v-card-item>
     </v-card>
@@ -114,9 +101,9 @@ const jobDetail = ref(props.jobDetail.first);
 <style scoped lang="scss">
 
 .job-desc-container {
-    & ul {
+    :deep(ul) {
         margin-left: 30px;
-        & li {
+        :deep(li) {
             font-size: 0.75rem !important;
             font-weight: 400;
             line-height: 1.25rem;
@@ -125,7 +112,7 @@ const jobDetail = ref(props.jobDetail.first);
             text-transform: none !important;
         }
     }
-    & p {
+    :deep(p) {
         font-size: 0.75rem !important;
         font-weight: 400;
         line-height: 1.25rem;
@@ -136,7 +123,7 @@ const jobDetail = ref(props.jobDetail.first);
 }
 
 .job-desc {
-    & > p {
+    :deep(p) {
         margin-top: 10px;
         margin-bottom: 10px
     }
