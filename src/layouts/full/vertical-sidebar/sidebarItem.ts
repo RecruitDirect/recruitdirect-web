@@ -56,7 +56,8 @@ import {
   IconJumpRope,
   IconLayoutKanban,
   IconWorldSearch,
-  IconBuildingBroadcastTower
+  IconBuildingBroadcastTower,
+  IconMessageShare
 } from '@tabler/icons-vue';
 
 export interface menu {
@@ -164,6 +165,11 @@ const sidebarItem: menu[] = [
     title: 'JobList',
     icon: IconWorldSearch,
     to: '/recruiter/joblist'
+  },
+  {
+    title: 'Post Job',
+    icon: IconMessageShare,
+    to: '/forms/add-job'
   },
   {
     title: 'PostedJobList',
@@ -379,11 +385,6 @@ const sidebarItem: menu[] = [
         to: '/forms/form-elements/switch'
       }
     ]
-  },
-  {
-    title: 'AddJob Form',
-    icon: IconFileText,
-    to: '/forms/add-job'
   },
   {
     title: 'Form Layout',

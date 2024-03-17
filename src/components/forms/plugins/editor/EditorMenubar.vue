@@ -139,7 +139,7 @@ const items = ref([
 ]);
 </script>
 <template>
-    <perfect-scrollbar class="d-flex align-center cursor-pointer menuBar">
+    <perfect-scrollbar class="d-flex align-center cursor-pointer menuBar flex-wrap">
         <template v-for="(item, index) in items">
             <div class="divider" v-if="item.type === 'divider'" :key="`divider${index}`" />
 

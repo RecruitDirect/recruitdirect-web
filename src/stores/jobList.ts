@@ -65,6 +65,39 @@ export const useJobsStore = defineStore({
                     console.log(error);
                 });
         },
+        async postJob(jobTitle: string, jobType: string, remoteType: string,
+            jobCategory: Array<string>, location: string, expirationDate: string, bonus: number,
+            bottomSalary: number, topSalary: number, hiringClientId: number, desc: string, skillDesc: string) {
+            let url = 'http://localhost:5001/job/add';
+
+            let form = new FormData();
+
+            form.append('name', jobTitle);
+            form.append('jobType', jobType);
+            form.append('remoteType', remoteType);
+            form.append('jobCategories', jobCategory.toString());
+            form.append('location', location);
+            form.append('expirationTime', expirationDate + ' 23:59:59');
+            form.append('totalBonus', bonus.toString());
+            form.append('bottomSalary', bottomSalary.toString());
+            form.append('topSalary', topSalary.toString());
+            // form.append('hiringClientId', hiringClientId.toString());
+            form.append('hiringClientId', '2');
+            form.append('description', desc);
+            form.append('skillDescription', skillDesc);
+
+            return await axios.post(url, form, 
+                {
+                    headers: {
+                    "Content-Type": "multipart/form-data"
+              }})
+                .then((res => {
+                    console.log(res.data);
+                }))
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
         // async getCandidatesGroup(jobId: String) {
         //     return await axios.get('http://localhost:5001/submission/list/byjobid?jobId=' + jobId)
         //         .then((res => {
