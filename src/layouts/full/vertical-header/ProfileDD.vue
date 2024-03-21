@@ -28,7 +28,7 @@ const authStore = userAuthStore();
                     </v-avatar>
                     <div class="ml-3">
                         <h6 class="text-h6 mb-n1">{{ authStore.$state.user.displayName }}</h6>
-                        <span class="text-subtitle-1 font-weight-regular textSecondary">Recruiter</span>
+                        <span class="text-subtitle-1 font-weight-regular textSecondary">{{ authStore.$state.role }}</span>
                         <div class="d-flex align-center mt-1">
                             <MailIcon size="18" stroke-width="1.5" />
                             <span class="text-subtitle-1 font-weight-regular textSecondary ml-2">{{ authStore.$state.user.email }}</span>
