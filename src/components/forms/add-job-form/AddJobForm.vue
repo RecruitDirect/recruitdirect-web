@@ -8,6 +8,7 @@ const props = defineProps(['userData', 'industries', 'jobTypes', 'remoteTypes', 
 const emit = defineEmits(['postJob']);
 
 const userId = ref(props.userData.id);
+const userCompany = ref(props.userData.company.name)
 
 const remoteSelect = ref('');
 const categoriesSelect = ref([]);
@@ -101,6 +102,11 @@ const locationCal = ((state: string, city: string) => {
 <template>
   <v-form @submit.prevent="emit('postJob', name, jobTypeSelect, remoteSelect, categoriesSelect, locationCal(selectedState, inputCity), 
                                 expirationDate, totalBonus, bottomSalary, topSalary, userId, editor?.getHTML(), skillEditor?.getHTML())">
+    <div>
+      Your to be posted job will be in {{ userCompany }} company
+      <div></div>
+      <a href="/forms/add-company"><v-btn color="success" class="my-4">Update</v-btn></a>
+    </div>
     <v-row>
       <v-col cols="6" sm="6">
         <v-label class="mb-2 font-weight-medium">Job title</v-label>

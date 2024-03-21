@@ -30,6 +30,32 @@ export const useCompaniesStore = defineStore({
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        async addCompany(name: string, url: string, location: string, size: number, logoUrl: string, description: string, id: number){
+            try{
+                let addUrl = 'http://localhost:5001/company/add';
+                let form = new FormData();
+                form.append('name', name);
+                form.append('url', url);
+                form.append('location', location);
+                form.append('size', size.toString());
+                form.append('logoUrl', logoUrl);
+                form.append('description', description);
+                const response = await axios.post(addUrl, form, 
+                    {
+                        headers: {
+                            "Content-Type": "multipart/form-data"
+                        }
+                    });
+                const companyId = response.data.id;
+                const updateUrl = `http://localhost:5001/hiringclient/updateCompany?id=${id}&companyId=${companyId}`;
+                await axios.patch(updateUrl);
+            }catch(error){
+                console.error(error.message);
+            }
+            
+
+            
         }
     }
 });
