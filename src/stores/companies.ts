@@ -30,6 +30,7 @@ export const useCompaniesStore = defineStore({
                 .catch((error) => {
                     console.log(error);
                 });
+
         },
         async addCompany(name: string, url: string, location: string, size: number, logoUrl: string, description: string, id: number){
             try{
@@ -53,8 +54,6 @@ export const useCompaniesStore = defineStore({
             }catch(error){
                 console.error(error.message);
             }
-            
-
             
         }
     }
