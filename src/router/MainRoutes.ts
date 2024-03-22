@@ -306,6 +306,11 @@ const MainRoutes = {
             component: () => import('@/views/forms/addJob.vue')
         },
         {
+            name: 'addCompany Form',
+            path: '/forms/add-company',
+            component: () => import('@/views/forms/addCompany.vue')
+        },
+        {
             name: 'Form Layout',
             path: '/forms/form-layouts',
             component: () => import('@/views/forms/FormLayouts.vue')
