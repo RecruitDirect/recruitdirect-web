@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import EditorMenubar from '@/components/forms/plugins/editor/EditorMenubar.vue';
+import addCompanyForm from '@/components/ui-components/dialogs/addCompanyForm.vue';
 
 const props = defineProps(['userData', 'industries', 'jobTypes', 'remoteTypes', 'states']);
 const emit = defineEmits(['postJob']);
@@ -105,7 +106,7 @@ const locationCal = ((state: string, city: string) => {
     <div>
       Your to be posted job will be in {{ userCompany }} company
       <div></div>
-      <a href="/forms/add-company"><v-btn color="success" class="my-4">Update</v-btn></a>
+      <addCompanyForm></addCompanyForm>
     </div>
     <v-row>
       <v-col cols="6" sm="6">
@@ -167,7 +168,7 @@ const locationCal = ((state: string, city: string) => {
         </div>
         <div class="editorArea">
           <v-card variant="outlined">
-            <div v-if="editor">
+            <div v-if="skillEditor">
               <EditorMenubar :editor="skillEditor" />
             </div>
             <editor-content :editor="skillEditor" />

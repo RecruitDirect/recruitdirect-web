@@ -307,8 +307,8 @@ const MainRoutes = {
         },
         {
             name: 'addCompany Form',
-            path: '/forms/add-company',
-            component: () => import('@/views/forms/addCompany.vue')
+            path: '/dialog/add-company',
+            component: () => import('@/components/ui-components/dialogs/addCompanyForm.vue')
         },
         {
             name: 'Form Layout',
