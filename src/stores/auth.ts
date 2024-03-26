@@ -91,7 +91,7 @@ export const userAuthStore = defineStore({
                     // ...
                     console.log(userCredential);
                     if (role == 'recruiter') {
-                        axios.post('http://localhost:5001/recruiter/add?name='+ this.user.displayName + '&email=' + this.user.email)
+                        axios.post('http://localhost:5001/recruiter/add?name='+ username + '&email=' + this.user.email)
                         .then((res => {
                             this.user.id = res.data.id;
                             localStorage.setItem('user', JSON.stringify(this.user));
@@ -105,7 +105,7 @@ export const userAuthStore = defineStore({
                         });
                     }
                     else {
-                        axios.post('http://localhost:5001/hiringclient/add?name='+ this.user.displayName + '&email=' + this.user.email)
+                        axios.post('http://localhost:5001/hiringclient/add?name='+ username + '&email=' + this.user.email)
                         .then((res => {
                             this.user.id = res.data.id;
                             localStorage.setItem('user', JSON.stringify(this.user));
